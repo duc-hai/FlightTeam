@@ -31,23 +31,26 @@ CREATE TABLE `khachhang` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---thêm khóa chính
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`sdt`);
 
---insert dữ liệu
+
 INSERT INTO `khachhang` (`sdt`, `matkhau`, `danhxung` ,`hoten`, `ngaysinh`,`cccd_passport`, `quoctich`,`email`, `gioitinh`) VALUES
 (0378888998, '123456', 'Mr. Đức', 'Hữu Đức', '02022002', '001082546333', 'Việt Nam','khongbiet@gmail.com','Nam'),
-(0399999999, '123456', 'Mr. Hải', 'Hải', '02032002', '001082546888', 'Việt Nam','hai@gmail.com','Nam'),
+(0399999999, '123456', 'Mr. Hải', 'Hải', '02032002', '001082546888', 'Việt Nam','hai@gmail.com','Nam');
 
 CREATE TABLE `vemaybay` (
   `madatcho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `thongtin_khachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `congvao` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `hotenkhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ngaysinhkhachhang` Date,
+  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `loaikhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `vitrighe` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `sohangly_tuixach` int(10) NOT NULL,
   `tonggiave` int(100) NOT NULL,
-  `loaive` varchar(50) COLLATE utf8_unicode_ci NOT NULL 
+  `loaive` varchar(50) COLLATE utf8_unicode_ci NOT NULL, 
+  `tinhtrang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ngaydat` Date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 ALTER TABLE `vemaybay`
