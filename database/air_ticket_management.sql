@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 15, 2022 lúc 10:55 AM
+-- Thời gian đã tạo: Th12 18, 2022 lúc 03:16 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 CREATE DATABASE `air_ticket_management`;
@@ -34,6 +34,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `baiviet` (
   `mabaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tenbaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `chitietbai` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `ngaydang` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -42,9 +43,9 @@ CREATE TABLE `baiviet` (
 -- Đang đổ dữ liệu cho bảng `baiviet`
 --
 
-INSERT INTO `baiviet` (`mabaiviet`, `chitietbai`, `ngaydang`) VALUES
-('01', 'GIÁ VÉ MÁY BAY CUỐI TUẦN CHỈ TỪ 699.000 VND/CHIỀU Ưu đãi hấp dẫn duy nhất trong hai ngày cuối tuần, bạn đã sẵn sàng chưa?', '2022-11-12'),
-('02', 'Chương trình áp dụng cho vé máy bay mua qua website và ứng dụng di động có ngày khởi hành từ nay đến hết 31/03/2023 (không áp dụng cho các giai đoạn cao điểm từ 29/12/2022 đến 05/01/2023 và giai đoạn cao điểm Tết Âm lịch)', '2022-11-11');
+INSERT INTO `baiviet` (`mabaiviet`, `tenbaiviet`, `chitietbai`, `ngaydang`) VALUES
+('BV01', 'Ưu đãi cuối tuần', 'GIÁ VÉ MÁY BAY CUỐI TUẦN CHỈ TỪ 699.000 VND/CHIỀU Ưu đãi hấp dẫn duy nhất trong hai ngày cuối tuần, bạn đã sẵn sàng chưa?', '2022-11-12'),
+('BV02', 'Mua vé tết âm lịch', 'Chương trình áp dụng cho vé máy bay mua qua website và ứng dụng di động có ngày khởi hành từ nay đến hết 31/03/2023 (không áp dụng cho các giai đoạn cao điểm từ 29/12/2022 đến 05/01/2023 và giai đoạn cao điểm Tết Âm lịch)', '2022-11-11');
 
 -- --------------------------------------------------------
 
@@ -54,38 +55,37 @@ INSERT INTO `baiviet` (`mabaiviet`, `chitietbai`, `ngaydang`) VALUES
 
 CREATE TABLE `banner` (
   `mabanner` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `anhbanner` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `anhbanner` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tendangnhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `mabaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `banner`
 --
 
-INSERT INTO `banner` (`mabanner`, `anhbanner`) VALUES
-('01', '123456'),
-('02', '123456');
+INSERT INTO `banner` (`mabanner`, `anhbanner`, `tendangnhap`, `mabaiviet`) VALUES
+('BN01', '123456', 'nhanvien1', 'BV02'),
+('BN02', '123456', 'nhanvien3', 'BV01');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `chitetchuyenbay`
+-- Cấu trúc bảng cho bảng `chitietchuyenbay`
 --
 
-CREATE TABLE `chitetchuyenbay` (
-  `masanbaydi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `chitietchuyenbay` (
   `machuyenbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `masanbayden` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Nơi đi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Nơi đến` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `masanbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `chitetchuyenbay`
+-- Đang đổ dữ liệu cho bảng `chitietchuyenbay`
 --
 
-INSERT INTO `chitetchuyenbay` (`masanbaydi`, `machuyenbay`, `masanbayden`, `Nơi đi`, `Nơi đến`) VALUES
-('01', '03', '02', 'Sài gòn', 'Hà nội'),
-('02', '04', '05', 'Hà nội', 'Đà Nẵng');
+INSERT INTO `chitietchuyenbay` (`machuyenbay`, `masanbay`) VALUES
+('FT01', 'SGN'),
+('FT01', 'HAN');
 
 -- --------------------------------------------------------
 
@@ -96,8 +96,8 @@ INSERT INTO `chitetchuyenbay` (`masanbaydi`, `machuyenbay`, `masanbayden`, `Nơi
 CREATE TABLE `chuyenbay` (
   `machuyenbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tenmaybay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ngaydi` date DEFAULT NULL,
-  `ngayden` date DEFAULT NULL
+  `ngaydi` datetime DEFAULT NULL,
+  `ngayden` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -105,10 +105,10 @@ CREATE TABLE `chuyenbay` (
 --
 
 INSERT INTO `chuyenbay` (`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) VALUES
-('01', 'Boeing 777', '2022-11-11', '2022-11-11'),
-('02', 'Airbus A330', '2022-12-11', '2022-12-11'),
-('03', 'Fokker 70', '2022-12-12', '2022-12-12'),
-('04', 'ATR 72', '2022-12-13', '2022-12-13');
+('FT01', 'Boeing 777', '2022-11-11 02:30:00', '2022-11-11 05:30:00'),
+('FT02', 'Airbus A330', '2022-12-11 01:30:00', '2022-12-11 04:00:00'),
+('FT03', 'Fokker 70', '2022-12-12 10:00:00', '2022-12-12 12:00:00'),
+('FT04', 'ATR 72', '2022-12-13 12:20:00', '2022-12-13 21:30:00');
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ INSERT INTO `khachhang` (`sdt`, `matkhau`, `danhxung`, `hoten`, `ngaysinh`, `ccc
 --
 
 CREATE TABLE `nhanvien` (
-  `sdt` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `tendangnhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `matkhau` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -154,11 +154,11 @@ CREATE TABLE `nhanvien` (
 -- Đang đổ dữ liệu cho bảng `nhanvien`
 --
 
-INSERT INTO `nhanvien` (`sdt`, `matkhau`, `email`, `hoten`, `ngaysinh`) VALUES
-('0389999966', '123456', 'khoi@gmail.com', 'Khôi', '2002-02-10'),
-('0389999977', '123456', 'tram@gmail.com', 'Ngân Trâm', '2002-03-02'),
-('0389999989', '123456', 'hai@gmail.com', 'Đức Hải', '2002-02-10'),
-('0389999999', '123456', 'duc@gmail.com', 'Hữu Đức', '2002-03-02');
+INSERT INTO `nhanvien` (`tendangnhap`, `matkhau`, `email`, `hoten`, `ngaysinh`) VALUES
+('nhanvien1', '123456', 'khoi@gmail.com', 'Khôi', '2002-02-10'),
+('nhanvien2', '123456', 'tram@gmail.com', 'Ngân Trâm', '2002-03-02'),
+('nhanvien3', '123456', 'hai@gmail.com', 'Đức Hải', '2002-02-10'),
+('nhanvien4', '123456', 'duc@gmail.com', 'Hữu Đức', '2002-03-02');
 
 -- --------------------------------------------------------
 
@@ -178,11 +178,11 @@ CREATE TABLE `sanbay` (
 --
 
 INSERT INTO `sanbay` (`masanbay`, `tensanbay`, `thanhpho`, `quocgia`) VALUES
-('01', 'Tân Sơn Nhất', 'TP HCM', 'Việt Nam'),
-('02', 'Nội Bài', 'TP Hà Nội', 'Việt Nam'),
-('03', 'Sân Bay Quốc Tế Cam Ranh', 'TP Cam ranh', 'Việt Nam'),
-('04', 'Sân Bay Buôn Ma Thuột', 'TP Buôn Ma Thuột', 'Việt Nam'),
-('05', 'Sân Bay Quốc Tế Đà Nẵng', 'TP Đà nẵng', 'Việt Nam');
+('BMV', 'Sân Bay Buôn Ma Thuột', 'TP Buôn Ma Thuột', 'Việt Nam'),
+('CXR', 'Sân Bay Quốc Tế Cam Ranh', 'TP Cam ranh', 'Việt Nam'),
+('DAD', 'Sân Bay Quốc Tế Đà Nẵng', 'TP Đà nẵng', 'Việt Nam'),
+('HAN', 'Nội Bài', 'TP Hà Nội', 'Việt Nam'),
+('SGN', 'Tân Sơn Nhất', 'TP HCM', 'Việt Nam');
 
 -- --------------------------------------------------------
 
@@ -203,8 +203,8 @@ CREATE TABLE `thanhtoan` (
 --
 
 INSERT INTO `thanhtoan` (`magiaodich`, `tenkhachhang`, `phuongthucthanhtoan`, `ngaygiaodich`, `sotien`) VALUES
-('01', 'Hữu Đức', 'Online', '2022-11-11', 1200000),
-('02', 'Đức Hải', 'Offline', '2022-12-10', 1000000);
+('GD01', 'Hữu Đức', 'Paypal', '2022-11-11', 1200000),
+('GD02', 'Đức Hải', 'Momo', '2022-12-10', 1000000);
 
 -- --------------------------------------------------------
 
@@ -214,10 +214,11 @@ INSERT INTO `thanhtoan` (`magiaodich`, `tenkhachhang`, `phuongthucthanhtoan`, `n
 
 CREATE TABLE `vemaybay` (
   `madatcho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `sodienthoaikhachdangnhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `sodienthoaikhachdangnhap` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hotenkhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinhkhachhang` date DEFAULT NULL,
-  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `sodienthoai` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `loaikhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `vitrighe` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `congvao` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -234,9 +235,9 @@ CREATE TABLE `vemaybay` (
 -- Đang đổ dữ liệu cho bảng `vemaybay`
 --
 
-INSERT INTO `vemaybay` (`madatcho`, `sodienthoaikhachdangnhap`, `hotenkhachhang`, `ngaysinhkhachhang`, `cccd_passport`, `loaikhachhang`, `vitrighe`, `congvao`, `sohangly_tuixach`, `tonggiave`, `loaive`, `tinhtrang`, `ngaydat`, `machuyenbay`, `magiaodich`) VALUES
-('VE102', '0378888998', 'Hữu Đức', '2002-03-02', '001082546333', 'Kim cương', '14A', '02', 2, 2200000, 'Thương gia', 'Đã thanh toán', '2022-12-12', '01', '02'),
-('VE103', '0399999999', 'Hải', '2002-02-10', '001082546888', 'Kim cương', '15A', '02', 1, 2200000, 'Thương gia', 'Đã thanh toán', '2022-12-12', '01', '02');
+INSERT INTO `vemaybay` (`madatcho`, `sodienthoaikhachdangnhap`, `hotenkhachhang`, `ngaysinhkhachhang`, `sodienthoai`, `cccd_passport`, `loaikhachhang`, `vitrighe`, `congvao`, `sohangly_tuixach`, `tonggiave`, `loaive`, `tinhtrang`, `ngaydat`, `machuyenbay`, `magiaodich`) VALUES
+('VE102', '0378888998', 'Hữu Đức', '2002-03-02', NULL, '001082546333', 'Kim cương', '14A', '02', 2, 2200000, 'Thương gia', 'Đã thanh toán', '2022-12-12', 'FT01', 'GD02'),
+('VE103', '0399999999', 'Hải', '2002-02-10', NULL, '001082546888', 'Kim cương', '15A', '02', 1, 2200000, 'Thương gia', 'Đã thanh toán', '2022-12-12', 'FT01', 'GD02');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -252,15 +253,16 @@ ALTER TABLE `baiviet`
 -- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
-  ADD PRIMARY KEY (`mabanner`);
+  ADD PRIMARY KEY (`mabanner`),
+  ADD KEY `banner_ibfk_1` (`tendangnhap`),
+  ADD KEY `banner_ibfk_2` (`mabaiviet`);
 
 --
--- Chỉ mục cho bảng `chitetchuyenbay`
+-- Chỉ mục cho bảng `chitietchuyenbay`
 --
-ALTER TABLE `chitetchuyenbay`
-  ADD KEY `masanbaydi` (`masanbaydi`),
-  ADD KEY `machuyenbay` (`machuyenbay`),
-  ADD KEY `masanbayden` (`masanbayden`);
+ALTER TABLE `chitietchuyenbay`
+  ADD KEY `chitietchuyenbay_ibfk_1` (`masanbay`),
+  ADD KEY `chitietchuyenbay_ibfk_2` (`machuyenbay`);
 
 --
 -- Chỉ mục cho bảng `chuyenbay`
@@ -278,7 +280,7 @@ ALTER TABLE `khachhang`
 -- Chỉ mục cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD PRIMARY KEY (`sdt`);
+  ADD PRIMARY KEY (`tendangnhap`);
 
 --
 -- Chỉ mục cho bảng `sanbay`
@@ -306,12 +308,18 @@ ALTER TABLE `vemaybay`
 --
 
 --
--- Các ràng buộc cho bảng `chitetchuyenbay`
+-- Các ràng buộc cho bảng `banner`
 --
-ALTER TABLE `chitetchuyenbay`
-  ADD CONSTRAINT `chitetchuyenbay_ibfk_1` FOREIGN KEY (`masanbaydi`) REFERENCES `sanbay` (`masanbay`),
-  ADD CONSTRAINT `chitetchuyenbay_ibfk_2` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`),
-  ADD CONSTRAINT `chitetchuyenbay_ibfk_3` FOREIGN KEY (`masanbayden`) REFERENCES `sanbay` (`masanbay`);
+ALTER TABLE `banner`
+  ADD CONSTRAINT `banner_ibfk_1` FOREIGN KEY (`tendangnhap`) REFERENCES `nhanvien` (`tendangnhap`),
+  ADD CONSTRAINT `banner_ibfk_2` FOREIGN KEY (`mabaiviet`) REFERENCES `baiviet` (`mabaiviet`);
+
+--
+-- Các ràng buộc cho bảng `chitietchuyenbay`
+--
+ALTER TABLE `chitietchuyenbay`
+  ADD CONSTRAINT `chitietchuyenbay_ibfk_1` FOREIGN KEY (`masanbay`) REFERENCES `sanbay` (`masanbay`),
+  ADD CONSTRAINT `chitietchuyenbay_ibfk_2` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`);
 
 --
 -- Các ràng buộc cho bảng `vemaybay`
