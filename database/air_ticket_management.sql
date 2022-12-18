@@ -34,11 +34,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `baiviet` (
   `mabaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-<<<<<<< HEAD
   `tenbaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-=======
-  `tenbaiviet` varchar (50) COLLATE utf8_unicode_ci NOT NULL,
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
   `chitietbai` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `ngaydang` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -47,15 +43,9 @@ CREATE TABLE `baiviet` (
 -- Đang đổ dữ liệu cho bảng `baiviet`
 --
 
-<<<<<<< HEAD
 INSERT INTO `baiviet` (`mabaiviet`, `tenbaiviet`, `chitietbai`, `ngaydang`) VALUES
 ('BV01', 'Ưu đãi cuối tuần', 'GIÁ VÉ MÁY BAY CUỐI TUẦN CHỈ TỪ 699.000 VND/CHIỀU Ưu đãi hấp dẫn duy nhất trong hai ngày cuối tuần, bạn đã sẵn sàng chưa?', '2022-11-12'),
 ('BV02', 'Mua vé tết âm lịch', 'Chương trình áp dụng cho vé máy bay mua qua website và ứng dụng di động có ngày khởi hành từ nay đến hết 31/03/2023 (không áp dụng cho các giai đoạn cao điểm từ 29/12/2022 đến 05/01/2023 và giai đoạn cao điểm Tết Âm lịch)', '2022-11-11');
-=======
-INSERT INTO `baiviet` (`mabaiviet`, `tenbaiviet`,`chitietbai`, `ngaydang`) VALUES
-('BV01', 'Ưu đãi cuối tuần','GIÁ VÉ MÁY BAY CUỐI TUẦN CHỈ TỪ 699.000 VND/CHIỀU Ưu đãi hấp dẫn duy nhất trong hai ngày cuối tuần, bạn đã sẵn sàng chưa?', '2022-11-12'),
-('BV02', 'Mua vé tết âm lịch','Chương trình áp dụng cho vé máy bay mua qua website và ứng dụng di động có ngày khởi hành từ nay đến hết 31/03/2023 (không áp dụng cho các giai đoạn cao điểm từ 29/12/2022 đến 05/01/2023 và giai đoạn cao điểm Tết Âm lịch)', '2022-11-11');
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 -- --------------------------------------------------------
 
@@ -66,15 +56,8 @@ INSERT INTO `baiviet` (`mabaiviet`, `tenbaiviet`,`chitietbai`, `ngaydang`) VALUE
 CREATE TABLE `banner` (
   `mabanner` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `anhbanner` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-<<<<<<< HEAD
   `tendangnhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `mabaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-=======
-  `tendangnhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL, 
-  -- Khóa ngoại bảng nhân viên
-  `mabaiviet` varchar(50) COLLATE utf8_unicode_ci NOT NULL 
-  -- Khóa ngoại bảng bài viết
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -82,20 +65,13 @@ CREATE TABLE `banner` (
 -- Đang đổ dữ liệu cho bảng `banner`
 --
 
-<<<<<<< HEAD
 INSERT INTO `banner` (`mabanner`, `anhbanner`, `tendangnhap`, `mabaiviet`) VALUES
 ('BN01', '123456', 'nhanvien1', 'BV02'),
 ('BN02', '123456', 'nhanvien3', 'BV01');
-=======
-INSERT INTO `banner` (`mabanner`, `anhbanner`) VALUES
-('BN01', '123456'),
-('BN02', '123456');
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
 -- Cấu trúc bảng cho bảng `chitietchuyenbay`
 --
 
@@ -111,28 +87,6 @@ CREATE TABLE `chitietchuyenbay` (
 INSERT INTO `chitietchuyenbay` (`machuyenbay`, `masanbay`) VALUES
 ('FT01', 'SGN'),
 ('FT01', 'HAN');
-=======
--- Cấu trúc bảng cho bảng `sanbay`
---
-
-CREATE TABLE `sanbay` (
-  `masanbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tensanbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `thanhpho` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `quocgia` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `sanbay`
---
-
-INSERT INTO `sanbay` (`masanbay`, `tensanbay`, `thanhpho`, `quocgia`) VALUES
-('SGN', 'Tân Sơn Nhất', 'TP HCM', 'Việt Nam'),
-('HAN', 'Nội Bài', 'TP Hà Nội', 'Việt Nam'),
-('CXR', 'Sân Bay Quốc Tế Cam Ranh', 'TP Cam ranh', 'Việt Nam'),
-('BMV', 'Sân Bay Buôn Ma Thuột', 'TP Buôn Ma Thuột', 'Việt Nam'),
-('DAD', 'Sân Bay Quốc Tế Đà Nẵng', 'TP Đà nẵng', 'Việt Nam');
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 -- --------------------------------------------------------
 
@@ -156,28 +110,6 @@ INSERT INTO `chuyenbay` (`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) VALUES
 ('FT02', 'Airbus A330', '2022-12-11 01:30:00', '2022-12-11 04:00:00'),
 ('FT03', 'Fokker 70', '2022-12-12 10:00:00', '2022-12-12 12:00:00'),
 ('FT04', 'ATR 72', '2022-12-13 12:20:00', '2022-12-13 21:30:00');
-<<<<<<< HEAD
-=======
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `chitietchuyenbay`
---
-
-CREATE TABLE `chitietchuyenbay` (
-  `machuyenbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `masanbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `chitietchuyenbay`
---
--- Dòng đầu là mã sân bay nơi đi, dòng sau là mã sân bay nơi đến
-INSERT INTO `chitietchuyenbay` (`machuyenbay`, `masanbay`) VALUES
-('FT01', 'SGN'), 
-('FT01', 'HAN');
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 -- --------------------------------------------------------
 
@@ -232,7 +164,6 @@ INSERT INTO `nhanvien` (`tendangnhap`, `matkhau`, `email`, `hoten`, `ngaysinh`) 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
 -- Cấu trúc bảng cho bảng `sanbay`
 --
 
@@ -257,8 +188,6 @@ INSERT INTO `sanbay` (`masanbay`, `tensanbay`, `thanhpho`, `quocgia`) VALUES
 -- --------------------------------------------------------
 
 --
-=======
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 -- Cấu trúc bảng cho bảng `thanhtoan`
 --
 
@@ -286,19 +215,11 @@ INSERT INTO `thanhtoan` (`magiaodich`, `tenkhachhang`, `phuongthucthanhtoan`, `n
 
 CREATE TABLE `vemaybay` (
   `madatcho` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-<<<<<<< HEAD
   `sodienthoaikhachdangnhap` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hotenkhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinhkhachhang` date DEFAULT NULL,
   `sodienthoai` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cccd_passport` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-=======
-  `sodienthoaikhachdangnhap` varchar(10) COLLATE utf8_unicode_ci NULL,
-  `hotenkhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ngaysinhkhachhang` date DEFAULT NULL,
-  `sodienthoai` varchar(10) COLLATE utf8_unicode_ci NULL,
-  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NULL,
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
   `loaikhachhang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `vitrighe` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `congvao` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -340,16 +261,9 @@ ALTER TABLE `banner`
 --
 -- Chỉ mục cho bảng `chitietchuyenbay`
 --
-<<<<<<< HEAD
 ALTER TABLE `chitietchuyenbay`
   ADD KEY `chitietchuyenbay_ibfk_1` (`masanbay`),
   ADD KEY `chitietchuyenbay_ibfk_2` (`machuyenbay`);
-=======
--- ALTER TABLE `chitetchuyenbay`
---   ADD KEY `masanbaydi` (`masanbaydi`),
---   ADD KEY `machuyenbay` (`machuyenbay`),
---   ADD KEY `masanbayden` (`masanbayden`);
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 --
 -- Chỉ mục cho bảng `chuyenbay`
@@ -397,7 +311,6 @@ ALTER TABLE `vemaybay`
 --
 -- Các ràng buộc cho bảng `banner`
 --
-<<<<<<< HEAD
 ALTER TABLE `banner`
   ADD CONSTRAINT `banner_ibfk_1` FOREIGN KEY (`tendangnhap`) REFERENCES `nhanvien` (`tendangnhap`),
   ADD CONSTRAINT `banner_ibfk_2` FOREIGN KEY (`mabaiviet`) REFERENCES `baiviet` (`mabaiviet`);
@@ -408,12 +321,6 @@ ALTER TABLE `banner`
 ALTER TABLE `chitietchuyenbay`
   ADD CONSTRAINT `chitietchuyenbay_ibfk_1` FOREIGN KEY (`masanbay`) REFERENCES `sanbay` (`masanbay`),
   ADD CONSTRAINT `chitietchuyenbay_ibfk_2` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`);
-=======
--- ALTER TABLE `chitetchuyenbay`
---   ADD CONSTRAINT `chitetchuyenbay_ibfk_1` FOREIGN KEY (`masanbaydi`) REFERENCES `sanbay` (`masanbay`),
---   ADD CONSTRAINT `chitetchuyenbay_ibfk_2` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`),
---   ADD CONSTRAINT `chitetchuyenbay_ibfk_3` FOREIGN KEY (`masanbayden`) REFERENCES `sanbay` (`masanbay`);
->>>>>>> dc660692904c0ad695f1f8371e6e25cb85938480
 
 --
 -- Các ràng buộc cho bảng `vemaybay`

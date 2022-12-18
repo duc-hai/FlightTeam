@@ -30,38 +30,38 @@
         public $dateout;
 
 
-        public function __construct ($idBooking, $seatPosition,$enntranceGate, $idFlight,$airName,$flightDate,$landingDay,$priceTicket,
-        $customePhoneNumber,$nameCustomer,$customerBirthday,$cccd_passport,$typeCustomer,$baggageNumber,$bookingDate,$idpay,$payerName,
-        $payMethods,$paymentdate,$datein,$dateout,$Iddepartureair,$IdEndAir) {
+        // public function __construct ($idBooking, $seatPosition,$enntranceGate, $idFlight,$airName,$flightDate,$landingDay,$priceTicket,
+        // $customePhoneNumber,$nameCustomer,$customerBirthday,$cccd_passport,$typeCustomer,$baggageNumber,$bookingDate,$idpay,$payerName,
+        // $payMethods,$paymentdate,$datein,$dateout,$Iddepartureair,$IdEndAir) {
             
-            $this->idBooking = $idBooking;
-            $this->seatPosition = $seatPosition;
-            $this->enntranceGate = $enntranceGate;
-            $this->ticketType = $ticketType;
-            $this->idFlight = $idFlight;
-            $this->airName = $airName;
-            $this->flightDate = $flightDate;
-            $this->landingDay = $landingDay;
-            $this->priceTicket = $priceTicket;
+        //     $this->idBooking = $idBooking;
+        //     $this->seatPosition = $seatPosition;
+        //     $this->enntranceGate = $enntranceGate;
+        //     $this->ticketType = $ticketType;
+        //     $this->idFlight = $idFlight;
+        //     $this->airName = $airName;
+        //     $this->flightDate = $flightDate;
+        //     $this->landingDay = $landingDay;
+        //     $this->priceTicket = $priceTicket;
 
-            $this->customePhoneNumber = $customePhoneNumber;
-            $this->nameCustomer = $nameCustomer;
-            $this->customerBirthday = $customerBirthday;
-            $this->cccd_passport = $cccd_passport;
-            $this->typeCustomer = $typeCustomer;
-            $this->baggageNumber = $baggageNumber ;
-            $this->bookingDate = $bookingDate;
+        //     $this->customePhoneNumber = $customePhoneNumber;
+        //     $this->nameCustomer = $nameCustomer;
+        //     $this->customerBirthday = $customerBirthday;
+        //     $this->cccd_passport = $cccd_passport;
+        //     $this->typeCustomer = $typeCustomer;
+        //     $this->baggageNumber = $baggageNumber ;
+        //     $this->bookingDate = $bookingDate;
 
-            $this->idpay = $idpay;
-            $this->payerName = $payerName;
-            $this->payMethods = $payMethods;
-            $this->paymentdate = $paymentdate;
+        //     $this->idpay = $idpay;
+        //     $this->payerName = $payerName;
+        //     $this->payMethods = $payMethods;
+        //     $this->paymentdate = $paymentdate;
 
-            $this->datein = $datein;
-            $this->dateount = $dateout;
+        //     $this->datein = $datein;
+        //     $this->dateount = $dateout;
 
-            $this->Iddepartureair = $Iddepartureair;
-        }
+        //     $this->Iddepartureair = $Iddepartureair;
+        // }
 
         public static function getAllTicket() {
            require_once ('connection.php');

@@ -25,10 +25,10 @@ require_once('../model/Flight.php');
             die (json_encode (array('code' => 0, 'data' => $result)));
         }
         public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair) {
-            $result = Flight::addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
+            Flight::addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
         }
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
-            $result = Flight::editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
+            Flight::editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
         }
 
     }
