@@ -18,7 +18,22 @@
             }
             return false;
         }
-
+        public static function checkSignIn($phone, $password) {
+            $conn = connection::connectToDatabase ();
+            $rs1 = mysqli_query($conn, "SELECT * FROM khachhang WHERE sdt = '$phone' and matkhau = '$password' ");
+            $rs2 = mysqli_query($conn, "SELECT * FROM nhanvien WHERE tendangnhap = '$phone' and matkhau = '$password' ");
+        
+            if (mysqli_num_rows($rs1) == 1 || mysqli_num_rows($rs2) == 1 ) {
+                if (mysqli_num_rows($rs1) == 1){
+                    return 1;
+                }else {
+                    return 2;
+                }
+            } else{
+                return 0;
+              }
+           
+    }
         public static function sendOTP ($phone) {
             require("SpeedSMSAPI.php"); // API của nhà cung cấp speed SMS
             //Init class SpeedSMSAPI and param is api access token
@@ -65,5 +80,6 @@
 
             $result = $conn->query($sql);
         }
+        
     }
 ?>

@@ -6,7 +6,9 @@ class AccountController {
     public static function checkDuplPhone ($phone) {
         return account::checkDuplicatePhone($phone);
     } 
-
+    public static function checkSignin ($phone, $password) {
+        return account::checkSignIn ($phone, $password);
+    }
     public static function sendOTP ($phone) {
         try {
             account::sendOTP($phone);
@@ -26,6 +28,15 @@ class AccountController {
 }
 
 $accContrl = new AccountController();
+if (isset($_POST['phone']) && isset($_POST['password']) ){
+    $signin = $accContrl->checkSignIn($_POST['phone'], $_POST['password']);
+    if ($signin == 1){
+        die($signin == 1 ? "true" : "false");
+    }
+    if ($signin == 2){
+        die($signin == 2 ? "0" : "1");
+    }
+}
 if (isset($_POST['phone'])) {
     $rel = $accContrl->checkDuplPhone($_POST['phone']);
     if ($rel == false) {
