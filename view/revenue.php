@@ -152,7 +152,10 @@
             doanhthu += parseInt(row.priceTicket);
             veban += 1;
         }
-        document.getElementById('doanhthu').innerHTML = doanhthu;
+        function formatMoney(number) {
+            return  number.toLocaleString('en-VN')+'đ';
+        }
+        document.getElementById('doanhthu').innerHTML = formatMoney(doanhthu);
         document.getElementById('veban').innerHTML = veban;
 
 
