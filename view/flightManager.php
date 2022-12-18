@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="icon" href="../assests/imgs/logo.png">    
-        <title>Document</title>
+        <title>Trang chủ - Admin</title>
     <style>
         :root {
             --main-color: white;
