@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2022 lúc 04:28 PM
+-- Thời gian đã tạo: Th12 18, 2022 lúc 05:15 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 CREATE DATABASE `air_ticket_management`;
@@ -181,6 +181,7 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`tendangnhap`, `matkhau`, `email`, `hoten`, `ngaysinh`) VALUES
+('admin', '123456', '123456@gmail.com', 'A23456', '2002-02-10'),
 ('nhanvien1', '123456', 'khoi@gmail.com', 'Khôi', '2002-02-10'),
 ('nhanvien2', '123456', 'tram@gmail.com', 'Ngân Trâm', '2002-03-02'),
 ('nhanvien3', '123456', 'hai@gmail.com', 'Đức Hải', '2002-02-10'),
