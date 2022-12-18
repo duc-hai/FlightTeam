@@ -68,6 +68,8 @@
                         <a class='list-group-item' onclick="get_history_tickets()" >Lịch sử mua vé</a>
                         <a  class='list-group-item' href="revenue.php" >doanh thu</a>
                         <a  class='list-group-item' onclick="get_flight()" >Quản lý chuyến bay</a>
+                        <a  class='list-group-item' href="clientManager.php">Quản lý khách hàng</a>
+                        <a  class='list-group-item' href="historyTicket.php">Lịch sử vé</a>
                     </div>
                 </div>
             </div>
