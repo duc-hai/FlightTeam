@@ -18,3 +18,6 @@ Cấu hình database:
 * Các thông tin khác:
 - Tài khoản username: 0378888998/123456
 - Tài khoản admin: admin/123456
+- Để tiện cho việc hiển thị thông tin đặt vé, hãy chọn ngày đi là ... và nơi đến là ...
+- Link demo:
+- Link đánh giá:
