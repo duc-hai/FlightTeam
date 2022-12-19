@@ -110,3 +110,9 @@ input {
     cursor: pointer;
     transition: 0.3s;
 }
+
+body {
+    opacity: 0.9;
+    background-image: url(../assests/imgs/background-signup.jfif);
+    background-size: cover;
+}
