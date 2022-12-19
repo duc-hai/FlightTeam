@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,39 +11,47 @@
     <link rel="icon" href="../assests/imgs/logo.png">
     <title>Document</title>
     <style>
-        :root {
-            --main-color: white;
-        }
-        #danhmuc{
-            background-color: var(--main-color);
-            text-align: center;
-            border: 1px solid white;
-        }
-        .list-group-item{
-            background-color: white;
-        }
-        .list-group-item:hover{
-            background-color:rgb(213, 184, 184);
-        }
-        body{
-            background-color:white;
-        }     
-        #addticket{
-            margin-top: 1%;
-            margin-bottom: 1%;
-        }
-      
-        form{
-            margin-top: 2%;
-        }
-        label{
-            font-style:inherit;
-        }
-        button{
-            margin-top: 1%;
-        }
+    :root {
+        --main-color: white;
+    }
+
+    #danhmuc {
+        background-color: var(--main-color);
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .list-group-item {
+        background-color: white;
+    }
+
+    .list-group-item:hover {
+        background-color: rgb(213, 184, 184);
+    }
+
+    body {
+        background-color: white;
+    }
+
+    #addticket {
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    form {
+        margin-top: 2%;
+    }
+
+    label {
+        font-style: inherit;
+    }
+
+    button {
+        margin-top: 1%;
+    }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -72,32 +81,33 @@
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-sm-5 col-md-5 col-lg-4">
-                <div  class="col-sm-12 col-md-12 col-lg-11">
+                <div class="col-sm-12 col-md-12 col-lg-11">
                     <h3 style="margin-top: 2%;">Thêm chuyến bay</h3>
                     <form action="/FlightTeam/controller/FlightManagerControler.php?action=addFlight" method="post">
-                        <label>Mã chuyến bay</label><br>    
+                        <label>Mã chuyến bay</label><br>
                         <input type="text" class="form-control" name="machuyenbay"><br>
                         <label>Tên máy bay</label><br>
                         <input type="text" class="form-control" name="tenmaybay"><br>
                         <label>Ngày khởi hành</label><br>
-                        <input type="date" class="form-control" name="ngaydi" ><br>
+                        <input type="date" class="form-control" name="ngaydi"><br>
                         <label>Ngày đến</label><br>
                         <input type="date" class="form-control" name="ngayden"><br>
                         <label>Mã sân bay đi</label><br>
                         <input type="text" class="form-control" name="masanbaydi"><br>
                         <label>Mã sân bay đến</label><br>
                         <input type="text" class="form-control" name="masanbayden"><br>
-                        <button type="sumit"class="btn btn-primary">Thêm chuyến bay</button>
+                        <button type="sumit" class="btn btn-primary">Thêm chuyến bay</button>
                     </form>
                 </div>
-               
-            </div>  
+
+            </div>
             <div class="col-lg-5">
                 <img src="../assests/imgs/posterlogin.png" class="img-fluid" alt="" style="margin-top: 1%;">
             </div>
         </div>
-       </div>
-       
+    </div>
+
     </div>
 </body>
+
 </html>

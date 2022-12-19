@@ -36,12 +36,12 @@
     
     <!-- Main content -->
     <div class="container">
-        <h1>Form Cập nhật Nhà cung cấp</h1>
+        <h1 style="margin-top: 2%;">Cập nhật thông tin khách hàng</h1>
 
         <form name="frmEdit" sdt="frmEdit" method="post" action="" class="form">
             <table class="table">
                 <tr>
-                    <td>sdt</td>
+                    <td>Số điện thoại</td>
                     <td><input type="number" name="sdt" sdt="sdt" class="form-control" value="<?php echo $row['sdt'] ?>" readonly /></td>
                 </tr>
                 <tr>
