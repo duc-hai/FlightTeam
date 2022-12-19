@@ -1,4 +1,5 @@
 <?php
+    require_once ('connection.php');    
     class Flight{
         // public $idBooking;
         // public $seatPosition;
@@ -64,7 +65,6 @@
         // }
 
         public static function getAllTicket() {
-           require_once ('connection.php');
             $conn = connection::connectToDatabase ();
 
             $sql = "SELECT vb.madatcho,vb.vitrighe,vb.congvao,vb.tonggiave,vb.loaive,cb.machuyenbay,cb.tenmaybay,cb.ngaydi,cb.ngayden
@@ -81,7 +81,6 @@
         }
 
         public static function getHistoryTicket(){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
 
             $sql = "SELECT * FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich";
@@ -98,7 +97,6 @@
             return $data;
         }
         public static function getRevenue($datein,$dateout){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
 
             $sql = "SELECT *FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich and ngaydat >= '$datein' AND ngaydat <= '$dateout'";
@@ -115,7 +113,6 @@
             return $data;
         }
         public static function getInforHistory($idBooking){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "SELECT * FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich and madatcho = '$idBooking'";
 
@@ -132,7 +129,6 @@
         }
 
         public static function getflight(){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "SELECT * FROM chitietchuyenbay,chuyenbay WHERE chitietchuyenbay.machuyenbay = chuyenbay.machuyenbay";
             $result = $conn -> query ($sql);
@@ -144,7 +140,6 @@
         }
 
         public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "INSERT INTO `chuyenbay`(`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) 
             VALUES ('$idFlight','$airName','$flightDate','$landingDay')";
@@ -155,7 +150,6 @@
         }
 
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "UPDATE `chuyenbay` SET `tenmaybay`='$airName',`ngaydi`='$flightDate',`ngayden`='$landingDay'
             WHERE machuyenbay = '$idFlight'";
@@ -163,7 +157,33 @@
             $sql2 = "UPDATE `chitietchuyenbay` SET `masanbay`='$Iddepartureair'  WHERE machuyenbay = '$idFlight'";
             $result = $conn -> query ($sql2);
         }
-        
+
+        public static function searchFlight ($startPlace, $startDate) {
+            $conn = connection::connectToDatabase();
+
+            $sql = "SELECT MACHUYENBAY, TENMAYBAY, NGAYDEN FROM CHUYENBAY WHERE date(ngaydi) = '2022-11-11'";
+            $rel = $conn->query($sql);
+
+            $data = [];
+            while ($r = $rel ->fetch_assoc()) {
+            $masanbay = Flight::getMaSanBay($r["machuyenbay"]);
+            $data[] = ["machuyenbay" => $r["machuyenbay"], "tenmaybay" => $r["tenmaybay"], "ngayden" => $r["ngayden"]];
+            }
+            return $data;
+        }
+
+        public static function getMaSanBay ($machuyenbay) {
+            $conn = connection::connectToDatabase ();
+            $sql = "SELECT MASANBAY FROM `chitietchuyenbay` WHERE MACHUYENBAY = '$machuyenbay' LIMIT 2";
+            $rel = $conn->query($sql);
+            $data = array();
+            $i = 0;
+            while ($vari = $rel-> fetch_array()) {
+                $data[$i] = $vari["masanbay"];
+                $i = $i + 1;
+            }
+            return $data;
+        }
     }
     
 ?>
