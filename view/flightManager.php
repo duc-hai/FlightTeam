@@ -12,8 +12,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/loading.css">
-
-
     <link rel="icon" href="../assests/imgs/logo.png">
     <title>Trang chủ - Admin</title>
     <style>
@@ -80,7 +78,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>  
+    </nav>  
         <div class="row">
             <div class="col-lg-2">
                 <div id="danhmuc">
@@ -91,36 +89,14 @@
                         <a  class='list-group-item' href="revenue.php" style="color: black;" >doanh thu</a>
                         <a  class='list-group-item' onclick="get_flight()" >Quản lý chuyến bay</a>
                         <a  class='list-group-item' href="clientManager.php"style="color: black;">Quản lý khách hàng</a>
-                        <a  class='list-group-item' href="historyTicket.php"style="color: black;">Lịch sử vé</a>
+                        <a  class='list-group-item' onclick="get_all_Post()">Quản lý bài viết</a>
                     </div>
                 </div>
             </div>
             <div  class="col-md-12 col-lg-9">
-                <!-- <div id="mainRevenue"></div> -->
                 <div id="mainView"></div>
             </div>
         </div>
-    </nav>
-    <div class="row">
-        <div class="col-lg-2">
-            <div id="danhmuc">
-                <img src="../assests/imgs/logo.png" style="width:100% ;height:100% ;">
-                <div class="list-group">
-                    <a class='list-group-item' onclick="get_all_tickets()">Thông tin vé máy bay</a>
-                    <a class='list-group-item' onclick="get_history_tickets()">Lịch sử mua vé</a>
-                    <a class='list-group-item' href="revenue.php" style="color: black;">doanh thu</a>
-                    <a class='list-group-item' onclick="get_flight()">Quản lý chuyến bay</a>
-                    <a class='list-group-item' href="clientManager.php" style="color: black;">Quản lý khách hàng</a>
-                    <a class='list-group-item' href="historyTicket.php" style="color: black;">Lịch sử vé</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-9">
-            <!-- <div id="mainRevenue"></div> -->
-            <div id="mainView"></div>
-        </div>
-    </div>
-    </div>
 </body>
 
 </html>
@@ -140,7 +116,6 @@
             }
         })
     }
-
     function show_tickets(data) {
         let tablemain = ` 
             <div id ="tableTicket">
@@ -164,6 +139,7 @@
                     </table>
                 </div>`
         $('#tableHis').remove();
+        $('#tablePost').remove();
         $('#tableTicket').remove();
         $('#tableFly').remove();
         $("#mainView").append(tablemain);
@@ -223,6 +199,7 @@
                 </tr>
                 </thead>
             </div>`
+        $('#tablePost').remove();
         $('#tableHis').remove();
         $('#tableTicket').remove();
         $('#tableFly').remove();
@@ -268,7 +245,7 @@
             <img src = "/FlightTeam/assests/imgs/anhMap.jpg" style="width:5% ;height:5% ;">
             </h1>
                 <a href="../view/addFlight.php" id="addticket" class="btn btn-danger mt-10">Thêm</a> <img src = "/FlightTeam/assests/imgs/iconfly.png" style="width:3% ;height:3% ;">
-                <table id ="list-getflight" class="table table-hover" style ="margin-top: 1%">
+                <table id ="list-getflight" class="table table-hover" style ="margin-top: 1% ">
                 <thead>
                 <tr>
                     <th>Mã chuyến bay</th>
@@ -280,6 +257,7 @@
                 </tr>
                 </thead>
                 </div>`
+        $('#tablePost').remove();
         $('#tableHis').remove();
         $('#tableTicket').remove();
         $('#tableFly').remove();
@@ -300,5 +278,57 @@
                 </table>`
             $("#list-getflight").append(table);
         }
+    }
+
+
+    function get_all_Post() {
+        $.ajax({
+            url: "../controller/PosterController.php?action=getAllPost",
+            dataType: 'json',
+            success: function (data) {
+                show_Post(data);
+            },
+            error: function (data) {
+            }
+        })
+    }
+    function show_Post(data) {
+        let tablemain = ` 
+            <div id ="tablePost">
+                <h1 style ="margin-top: 4%">Thông tin bài viết
+                <img src = "/FlightTeam/assests/imgs/anhMap.jpg" style="width:5% ;height:5% ;">
+                </h1>
+                    <table id="list-Post" class="table table-bordered" style ="margin-top: 2%;text-align: center;">
+                    <thead>
+                        <tr class="header">
+                            <th>Mã Bài viết</th>
+                            <th>Tên bài viết</th>
+                            <th>Ngày đăng</th>
+                            <th>Hình ảnh</th>
+                        </tr>  
+                    </thead>
+                    </table>
+                </div>`
+        $('#tablePost').remove();
+        $('#tableHis').remove();
+        $('#tableTicket').remove();
+        $('#tableFly').remove();
+        $("#mainView").append(tablemain);
+
+        for (let i = 0; i < data.data.length; i++) {
+            let row = data.data[i];
+            let table = `
+                <tbody>
+                    <tr>
+                        <td>`+ row.idPost+`</td>
+                        <td>`+ row.namePosst +`</td>
+                        <td>`+ row.datePost + `</td>
+                        <td><img src = "`+row.imgPost+`" style = "width:200px ; height:100px ;"></td>
+                    </tr>
+                </tbody>
+                </table>`
+            $("#list-Post").append(table);
+        }
+
     }
 </script>

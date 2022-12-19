@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Trang chủ</title>
+    <link rel="icon" href="../assests/imgs/logo.png">
     <style>
         body{
             font-family: 'Roboto Slab';
@@ -49,25 +50,25 @@
     <!-- Navbar -->
   <nav class="navbar navbar-expand-lg " style="background-color: #CFF3FF;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="../assests/imgs/logo.png" alt="" srcset="" height="60px">
+            <a class="navbar-brand" href="../view/home.php">
+                 <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill">FlightTeam Air</a>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse "  id="navbarSupportedContent">
                 <ul id="nav-custom" class="navbar-nav ml-auto " style="font-weight: 600;
-                                                    font-size: 24px;
-                                                    line-height: 40px;">
+                                                    font-size: 15px;
+                                                    line-height: 30px;">
                     <li class="nav-item px-4">
                         <a class="nav-link active"  aria-current="page"  href="/">Lên kế hoạch</a>
                     </li>
                      <li class="nav-item px-4" >
-                        <a class="nav-link active"  aria-current="page" href="/">Chuyến bay của tôi</a>
+                        <a class="nav-link active"  aria-current="page" href="../view/historyTicket.php">Chuyến bay của tôi</a>
                     </li>
         
                      <li class="nav-item px-4">
-                        <a class="nav-link active"  aria-current="page" href="/login">Đăng nhập || Đăng ký</a>
+                        <a class="nav-link active"  aria-current="page" href="../view/signin.php">Đăng nhập || Đăng ký</a>
                      </li>
             
                  </ul>

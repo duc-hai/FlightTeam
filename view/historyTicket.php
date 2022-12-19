@@ -19,9 +19,9 @@
 
     
     th, td {
-    border: 1px solid black;
-    padding: 8px;
-
+        border: 1px solid black;
+        padding: 8px;
+        background-color: aliceblue;
     }
 
     thead, th  {
@@ -53,10 +53,40 @@
         margin-bottom: 1%;
         margin-left: 4%
     }
+    body {
+      /* opacity: 0.9; */
+      background-image: url(../assests/imgs/background-signup.jfif);
+      background-size: cover;
+ 
+    }
 
 </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../view/home.php">
+                <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
+                    FlightTeam Air</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="countItemCart" class="nav-link" href=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>  
 <div class="container">
     <div class="row" id="seach">
     <div class="col-sm-1 col-md-2 col-lg-2"></div>
