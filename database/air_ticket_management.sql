@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 18, 2022 lúc 05:15 PM
+-- Thời gian đã tạo: Th12 19, 2022 lúc 07:22 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 CREATE DATABASE `air_ticket_management`;
@@ -139,13 +139,13 @@ INSERT INTO `chuyenbay` (`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) VALUES
 CREATE TABLE `khachhang` (
   `sdt` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `matkhau` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `danhxung` varchar(50) COLLATE utf8_unicode_ci NULL,
+  `danhxung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinh` date DEFAULT NULL,
-  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NULL,
-  `quoctich` varchar(50) COLLATE utf8_unicode_ci NULL,
+  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `quoctich` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `gioitinh` varchar(50) COLLATE utf8_unicode_ci NULL
+  `gioitinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -213,6 +213,83 @@ INSERT INTO `sanbay` (`masanbay`, `tensanbay`, `thanhpho`, `quocgia`) VALUES
 ('PQC', 'Sân Bay Phú Quốc', 'TP Phú quốc', 'Việt Nam'),
 ('SGN', 'Tân Sơn Nhất', 'TP HCM', 'Việt Nam'),
 ('VCL', 'Sân bay Chu Lai', 'TP Chu lai', 'Việt Nam');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `soghe`
+--
+
+CREATE TABLE `soghe` (
+  `machuyenbay` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `masoghe` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `soghe`
+--
+
+INSERT INTO `soghe` (`machuyenbay`, `masoghe`) VALUES
+('FT01', 'A01'),
+('FT01', 'A02'),
+('FT01', 'A03'),
+('FT01', 'A04'),
+('FT01', 'A05'),
+('FT01', 'A06'),
+('FT01', 'A07'),
+('FT01', 'A08'),
+('FT01', 'A09'),
+('FT01', 'A10'),
+('FT01', 'B01'),
+('FT01', 'B02'),
+('FT01', 'B03'),
+('FT01', 'B04'),
+('FT01', 'B05'),
+('FT01', 'B06'),
+('FT01', 'B07'),
+('FT01', 'B08'),
+('FT01', 'B09'),
+('FT01', 'B10'),
+('FT02', 'A01'),
+('FT02', 'A02'),
+('FT02', 'A03'),
+('FT02', 'A04'),
+('FT02', 'A05'),
+('FT02', 'A06'),
+('FT02', 'A07'),
+('FT02', 'A08'),
+('FT02', 'A09'),
+('FT02', 'A10'),
+('FT02', 'B01'),
+('FT02', 'B02'),
+('FT02', 'B03'),
+('FT02', 'B04'),
+('FT02', 'B05'),
+('FT02', 'B06'),
+('FT02', 'B07'),
+('FT02', 'B08'),
+('FT02', 'B09'),
+('FT02', 'B10'),
+('FT03', 'A01'),
+('FT03', 'A02'),
+('FT03', 'A03'),
+('FT03', 'A04'),
+('FT03', 'A05'),
+('FT03', 'A06'),
+('FT03', 'A07'),
+('FT03', 'A08'),
+('FT03', 'A09'),
+('FT03', 'A10'),
+('FT04', 'B01'),
+('FT04', 'B02'),
+('FT04', 'B03'),
+('FT04', 'B04'),
+('FT04', 'B05'),
+('FT04', 'B06'),
+('FT04', 'B07'),
+('FT04', 'B08'),
+('FT04', 'B09'),
+('FT04', 'B10');
 
 -- --------------------------------------------------------
 
@@ -345,6 +422,12 @@ ALTER TABLE `sanbay`
   ADD PRIMARY KEY (`masanbay`);
 
 --
+-- Chỉ mục cho bảng `soghe`
+--
+ALTER TABLE `soghe`
+  ADD PRIMARY KEY (`machuyenbay`,`masoghe`);
+
+--
 -- Chỉ mục cho bảng `thanhtoan`
 --
 ALTER TABLE `thanhtoan`
@@ -376,6 +459,12 @@ ALTER TABLE `banner`
 ALTER TABLE `chitietchuyenbay`
   ADD CONSTRAINT `chitietchuyenbay_ibfk_1` FOREIGN KEY (`masanbay`) REFERENCES `sanbay` (`masanbay`),
   ADD CONSTRAINT `chitietchuyenbay_ibfk_2` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`);
+
+--
+-- Các ràng buộc cho bảng `soghe`
+--
+ALTER TABLE `soghe`
+  ADD CONSTRAINT `soghe_ibfk_1` FOREIGN KEY (`machuyenbay`) REFERENCES `chuyenbay` (`machuyenbay`);
 
 --
 -- Các ràng buộc cho bảng `vemaybay`
