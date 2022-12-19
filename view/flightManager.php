@@ -38,8 +38,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-            <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
-                <a class="navbar-brand" href="#">FlightTeam Air</a>
+                <a class="navbar-brand" href="../view/home.php">
+                <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
+                    FlightTeam Air</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

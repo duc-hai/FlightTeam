@@ -45,8 +45,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container" >
+            <a class="navbar-brand" href="../view/flightManager.php">
             <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
-            <a class="navbar-brand" href="../view/flightManager.php">FlightTeam Air</a>
+            FlightTeam Air</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -157,7 +158,5 @@
         }
         document.getElementById('doanhthu').innerHTML = formatMoney(doanhthu);
         document.getElementById('veban').innerHTML = veban;
-
-
     }
 </script>

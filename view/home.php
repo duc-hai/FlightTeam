@@ -50,7 +50,9 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse "  id="navbarSupportedContent">
-            <ul id="nav-custom" class="navbar-nav ml-auto " style="font-weight: 600;font-size: 24px;line-height: 40px;">
+            <ul id="nav-custom" class="navbar-nav ml-auto " style="font-weight: 600;
+                                                    font-size: 24px;
+                                                    line-height: 40px;">
               <li class="nav-item px-4">
                 <a class="nav-link active"  aria-current="page"  href="/">Lên kế hoạch</a>
               </li>
@@ -184,11 +186,11 @@
       <div class="container-fluid ">
         <div class="row banner">
             <div class="col-12 p-0">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicatorsecon" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicatorsecon" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicatorsecon" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicatorsecon" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -201,11 +203,11 @@
                     <img class="d-block w-100" src="../assests/imgs/b1.jpg" alt="Third slide">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleIndicatorsecon" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleIndicatorsecon" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -216,25 +218,25 @@
       <div class="container">
         <div class="row">
             <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
+                <a href="../view/posts.php?idPost=BV01&action=getinforPost"><img class="img-place" src="../assests/imgs/bai-vung-bau-canh-dep-phu-quoc.jpg"></a>
             </div>
             <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
+                <a href="../view/posts.php?idPost=BV02&action=getinforPost"><img class="img-place" src="../assests/imgs/dalat2.jpg" style="height:95%;"></a>
             </div>
             <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
-            </div>
-
-            <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
+                <a href="../view/posts.php?idPost=BV03&action=getinforPost"><img class="img-place" src="../assests/imgs/HN.jpg"></a>
             </div>
 
             <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
+                <a href="../view/posts.php?idPost=BV04&action=getinforPost"><img class="img-place" src="../assests/imgs/anh-nha-trang.jpg"style="height:90%;"></a>
             </div>
 
             <div class="col-4">
-                <img class="img-place" src="../assests/imgs/hcm.jpg">
+                <a href="../view/posts.php?idPost=BV05&action=getinforPost"><img class="img-place" src="../assests/imgs/daklak.jpg"style="height:90%;"></a>
+            </div>
+
+            <div class="col-4">
+                <a href="../view/posts.php?idPost=BV06&action=getinforPost"><img class="img-place" src="../assests/imgs/hcm.jpg"style="height:90%;"></a>
             </div>
 
         </div>
@@ -261,7 +263,6 @@
             <div class="col-2">
             <img class="img-question" src="../assests/imgs/question1.jpg">
             </div>
-
         </div>
       </div>
 

@@ -55,7 +55,7 @@
                 <button id="btnSignUp" type="button" class="btn btn-block mt-2" onclick="checkValid ()">Đăng ký</button>
               </div>
             </div>
-            <p class="text-center mt-3">Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a></p>
+            <p class="text-center mt-3">Bạn đã có tài khoản? <a href="../view/signin.php">Đăng nhập ngay</a></p>
           </form>
 
           <div id="progress" class="progress mb-3 mt-2" style="width: 70%; margin:auto">
