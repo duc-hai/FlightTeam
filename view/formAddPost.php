@@ -77,24 +77,25 @@
             </div>
         </div>
     </nav>
-    <div>
-        <div class="row">
-            <div class="col-lg-2"></div>
+    <div class="row">
+        <div class="col-lg-1"></div>
             <div class="col-sm-5 col-md-5 col-lg-4">
-                <div class="col-sm-12 col-md-12 col-lg-11">
+                <div class="col-sm-1 col-md-10 col-lg-10">
                     <h3 style="margin-top: 2%;">Thêm Bài viết</h3>
-                    <form action="#" method="post">
+                    <form action="../model/addPoster.php" method="post" enctype="multipart/form-data">
                         <label>Mã bài viết</label><br>    
                         <input type="text" class="form-control" name="mabaiviet"><br>
+                        <label>Mã hình ảnh</label><br>    
+                        <input type="text" class="form-control" name="mahinhanh"><br>
                         <label>Tên Bài viết</label><br>
                         <input type="text" class="form-control" name="tenbaiviet"><br>
                         <label>Ngày Đăng</label><br>
-                        <input type="date" class="form-control" name="ngayden"><br>
+                        <input type="date" class="form-control" name="ngaydang"><br>
                         <label>Nội dung</label><br>
                         <textarea id="noidung" name="noidung" rows="4" cols="50"></textarea>
                         <label>Hình ảnh</label><br>
-                        <input type="file" class="form-control" name="anhbaiviet"><br>
-                        <button type="sumit" class="btn btn-primary">Thêm bài viết</button>
+                        <input type="file" class="form-control" name="photo" id="fileSelect"><br>
+                        <button type="sumit" class="btn btn-primary" name="submit">Thêm bài viết</button>
                     </form>
                 </div>
             </div>
@@ -102,8 +103,6 @@
                 <img src="../assests/imgs/posterlogin.png" class="img-fluid" alt="" style="margin-top: 1%;">
             </div>
         </div>
-    </div>
-
     </div>
 </body>
 

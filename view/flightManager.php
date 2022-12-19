@@ -295,7 +295,7 @@
             <div id ="tablePost">
                 <h1 style ="margin-top: 4%">Thông tin bài viết
                 <img src = "/FlightTeam/assests/imgs/internet.jpg" style="width:5% ;height:5% ;"><br>
-                <a href="../view/addPost.php" id="addticket" class="btn btn-danger mt-10">Thêm bài viết</a>
+                <a href="../view/formAddPost.php" id="addticket" class="btn btn-danger mt-10">Thêm bài viết</a>
                 </h1>
                     <table id="list-Post" class="table table-bordered" style ="margin-top: 2%;text-align: center;">
                     <thead>
