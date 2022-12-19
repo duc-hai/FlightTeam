@@ -27,17 +27,19 @@
 
 
     function loadData () {
-        $.ajax({
-        type: 'GET',
-        url: '../controller/BookingTicketController.php?action=searchFlight',
-        dataType: 'json',
-        success: function (data, status) {
+        // $.ajax({
+        // type: 'GET',
+        // url: '../controller/BookingTicketController.php?action=searchFlight',
+        // dataType: 'json',
+        // success: function (data, status) {
             
-        },
-        error: function (data) {
+        // },
+        // error: function (data) {
         
-        }
-        });
+        // }
+        // });
+
+        location.href = "../controller/BookingTicketController.php?action=searchFlight";
     }
 </script>
 <body>  
