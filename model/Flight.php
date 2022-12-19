@@ -1,33 +1,33 @@
 <?php
     class Flight{
-        public $idBooking;
-        public $seatPosition;
-        public $enntranceGate;   
-        public $ticketType;
-        public $idFlight;
-        public $airName;
-        public $flightDate;
-        public $landingDay;
-        public $priceTicket;
+        // public $idBooking;
+        // public $seatPosition;
+        // public $enntranceGate;   
+        // public $ticketType;
+        // public $idFlight;
+        // public $airName;
+        // public $flightDate;
+        // public $landingDay;
+        // public $priceTicket;
 
-        public $customePhoneNumber;
-        public $nameCustomer;
-        public $customerBirthday;
-        public $cccd_passport;
-        public $typeCustomer;
-        public $baggageNumber;
-        public $bookingDate;
+        // public $customePhoneNumber;
+        // public $nameCustomer;
+        // public $customerBirthday;
+        // public $cccd_passport;
+        // public $typeCustomer;
+        // public $baggageNumber;
+        // public $bookingDate;
 
-        public $Iddepartureair;
-        public $IdEndAir;
+        // public $Iddepartureair;
+        // public $IdEndAir;
         
-        public $idpay;
-        public $payerName;
-        public $payMethods;
-        public $paymentdate;
+        // public $idpay;
+        // public $payerName;
+        // public $payMethods;
+        // public $paymentdate;
 
-        public $datein;
-        public $dateout;
+        // public $datein;
+        // public $dateout;
 
 
         // public function __construct ($idBooking, $seatPosition,$enntranceGate, $idFlight,$airName,$flightDate,$landingDay,$priceTicket,

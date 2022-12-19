@@ -20,7 +20,7 @@
             background-color:rgb(213, 184, 184);
         }
         body{
-            background-color:white;
+            background-color:rgb(245, 245, 245);
         }     
         #addticket{
             margin-top: 1%;
@@ -52,11 +52,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="../view/flightManager.php">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href=""></a>
                     </li>
@@ -67,24 +62,25 @@
             </div>
         </div>
     </nav>
-    <div class="container">
         <div class="row">
-            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+            <img src = "/FlightTeam/assests/imgs/logo.png" style="width:100% ;height:80% ;">
+            </div>
             <div class="col-lg-4 col-md-10 col-lg-9">
-                <h1 style ="margin-top: 4%">Thống kê doanh thu</h1>
-                <form action="../view/revenue.php">
+                <h1 style ="margin-top: 4%">Thống kê doanh thu<img src ="/FlightTeam/assests/imgs/bieudo.jpg" style="width:5% ;height:5% "></h1>
+                <form action="/FlightTeam/view/revenue.php">
                     <label for="datein">Từ ngày:</label>
                     <input type="date" id="datein" name="datein">
                     <label for="dateout" style = "margin-left:2%">Đến ngày:</label>
                     <input type="date" id="dateout" name="dateout">
                     <input type="submit" class="btn btn-danger " value="Thống kê" style = "margin-left:2%">
-                    <a href="../view/flightManager.php" class="btn btn-danger " style = "margin-left:1%">Trở về</a>
-
+                    <a href="/FlightTeam/view/flightManager.php" class="btn btn-danger " style = "margin-left:1%">Trở về</a>
                 </form>   
             </div>      
         </div>
+
         <div class="row">
-            <div class="col-lg-1"></div>
+            <div class="col-lg-2"></div>
                 <div class="col-lg-4 col-md-10 col-lg-9">
                     <table id="list-ticket" class="table table-bordered">
                     <thead>
@@ -101,11 +97,10 @@
                 <div id="mainView"></div>
             </div>
         </div>
-    </div> 
     <div class="container">
         <div class="row">
             <div class="col-lg-12"><label style="font-size:large">Số lượng vé bán:</label><a id ='veban'></a></div>
-            <div class="col-lg-12"><label style="font-size:large">Tổng doanh thu:</label><a id ='doanhthu'></a></div>
+            <div class="col-lg-12"><label style="font-size:large">Tổng doanh thu:</label><a id ='doanhthu'></a></div><br>
     </div>
 </body>
 </html> 
@@ -160,8 +155,4 @@
 
 
     }
-
-        
-    
-         
 </script>

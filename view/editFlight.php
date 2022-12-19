@@ -76,7 +76,7 @@
                     <h3 style="margin-top: 2%;">Chỉnh sửa chuyến bay</h3>
                     <form action="../controller/FlightManagerControler.php?action=editFlight" method="post">
                         <label>Mã chuyến bay</label><br>    
-                        <input type="view" class="form-control" name="machuyenbay" value="<?php echo $_GET['idFlight'] ?>"><br>
+                        <input type="view" class="form-control" name="machuyenbay" value="<?php echo $_GET['idFlight'] ?>"readonly><br>
                         <label>Tên máy bay</label><br>
                         <input type="text" class="form-control" name="tenmaybay"><br>
                         <label>Ngày khởi hành</label><br>

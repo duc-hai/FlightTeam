@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="icon" href="../assests/imgs/logo.png">    
         <title>Trang chủ - Admin</title>
     <style>
@@ -85,6 +84,7 @@
     $(document).ready(function () {
         get_all_tickets();
     });
+    // lấy dữ  liệu cho quản lý vé máy bay
     function get_all_tickets() {
         $.ajax({
         url: "../controller/FlightManagerControler.php?action=getAllTicket",
@@ -100,7 +100,9 @@
     function show_tickets(data) {
             let tablemain =` 
             <div id ="tableTicket">
-                <h1 style ="margin-top: 4%">Thông tin vé máy bay</h1>
+                <h1 style ="margin-top: 4%">Thông tin vé máy bay
+                <img src = "/FlightTeam/assests/imgs/anhMap.jpg" style="width:5% ;height:5% ;">
+                </h1>
                     <table id="list-ticket" class="table table-bordered" style ="margin-top: 2%">
                     <thead>
                         <tr class="header">
@@ -123,19 +125,18 @@
             $("#mainView").append(tablemain);
             for (let i = 0; i < data.data.length; i++) {
                 let row = data.data[i];
-                let table = 
-                `
+                let table =  `
                 <tbody>
                     <tr>
-                        <td>`+row.idBooking+`</td>
+                        <td style="width:15%">`+row.idBooking+`<img src = "/FlightTeam/assests/imgs/ticket.png" style="width:40% ;height:40%; margin-left:10%"></td>
                         <td>`+row.seatPosition+`</td>
                         <td>`+row.enntranceGate+`</td>
                         <td>`+row.ticketType+`</td>
-                        <td>`+row.idFlight+`</td>
+                        <td style="width:10%">`+row.idFlight+`<img src = "/FlightTeam/assests/imgs/logo.png" style="width:50% ;height:50% ;"></td>
                         <td>`+row.airName+`</td>
                         <td>`+row.flightDate+`</td>
                         <td>`+row.landingDay+`</td>
-                        <td>`+row.priceTicket+`</td>
+                        <td  style="color:red;">`+row.priceTicket+`</td>
                     </tr>
                 </tbody>
                 </table>`
@@ -143,6 +144,7 @@
             }
          
         }
+// lấy dữ  liệu cho quản lý vé đã bán
 
     function get_history_tickets() {
         $.ajax({
@@ -159,7 +161,9 @@
     function show_history_tickets (data) {
             let tablemain =`
             <div id ="tableHis">
-            <h1 style ="margin-top: 4%">Lịch sử mua vé</h1>
+            <h1 style ="margin-top: 4%">Lịch sử mua vé            
+            <img src = "/FlightTeam/assests/imgs/history.jpg" style="width:5% ;height:5% ;">
+            </h1>
             <table id="list-history-ticket" class="table table-bordered"style ="margin-top: 2%">
                 <thead>
                 <tr>
@@ -216,8 +220,10 @@
         function show_flight(data) {
             let tablemain = `
             <div id ="tableFly">
-            <h1 style ="margin-top: 4%">Quản lý chuyến bay</h1>
-                <a href="../view/addFlight.php" id="addticket" class="btn btn-danger mt-10">Thêm chuyến bay</a>
+            <h1 style ="margin-top: 4%">Quản lý chuyến bay
+            <img src = "/FlightTeam/assests/imgs/anhMap.jpg" style="width:5% ;height:5% ;">
+            </h1>
+                <a href="../view/addFlight.php" id="addticket" class="btn btn-danger mt-10">Thêm</a> <img src = "/FlightTeam/assests/imgs/iconfly.png" style="width:3% ;height:3% ;">
                 <table id ="list-getflight" class="table table-hover" style ="margin-top: 1%">
                 <thead>
                 <tr>
@@ -238,12 +244,12 @@
                 let table = 
                 `<tbody>
                     <tr>
-                        <td>`+row.idFlight+`</td>
+                        <td style="width:15%">`+row.idFlight+`<img src = "/FlightTeam/assests/imgs/logo.png" style="width:50% ;height:50% ;"></td>
                         <td>`+row.airName+`</td>
                         <td>`+row.flightDate+`</td>
                         <td>`+row.landingDay+`</td>
                         <td>`+row.Iddepartureair+`</td>
-                        <td><a href="../view/editFlight.php?idFlight=` +row.idFlight+`" class="btn btn-primary">Edit</a></td>
+                        <td><a href="../view/editFlight.php?idFlight=` +row.idFlight+`" class="btn btn-primary">Sửa</a></td>
                     </tr>
                 </body>
                 </table>`

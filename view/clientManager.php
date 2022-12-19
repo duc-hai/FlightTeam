@@ -14,7 +14,7 @@
 
     <!-- Main content -->
     <div class="container">
-        <h1>Danh sách Nhà cung cấp</h1>
+        <h1 style="margin-top: 3%;">Danh sách Khách hàng</h1>
 
         <?php
         // Truy vấn database để lấy danh sách
@@ -50,25 +50,19 @@
             $rowNum++;
         }
         ?>
-
-        <!-- Button Thêm mới -->
-        <a href="create.php" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Thêm mới
-        </a>
-
-        <table class="table table-borderd">
+        <table class="table table-borderd" style="margin-bottom: 1%;">
             <thead>
                 <tr>
                     <th>STT</th>
                     <th>Số điện thoại</th>
-                    <th>Mật khẩu</th>
                     <th>Danh xưng</th>
                     <th>Họ tên</th>
                     <th>Ngày sinh</th>
-                    <th>Cccd / cccd_passport</th>
+                    <th>CCCD/Passport</th>
                     <th>Quốc tịch</th>
                     <th>Email</th>
                     <th>Giới tính</th>
+                    <th></th>   
                 </tr>
             </thead>
             <tbody>
@@ -76,7 +70,6 @@
                     <tr>
                         <td><?php echo $row['rowNum']; ?></td>
                         <td><?php echo $row['sdt']; ?></td>
-                        <td><?php echo $row['matkhau']; ?></td>
                         <td><?php echo $row['danhxung']; ?></td>
                         <td><?php echo $row['hoten']; ?></td>
                         <td><?php echo $row['ngaysinh']; ?></td>
