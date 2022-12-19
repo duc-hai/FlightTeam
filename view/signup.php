@@ -58,6 +58,13 @@
             <p class="text-center mt-3">Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a></p>
           </form>
 
+          <div id="progress" class="progress mb-3 mt-2" style="width: 70%; margin:auto">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="33.3"
+              aria-valuemin="0" aria-valuemax="100" style="width:33.3%">
+              Bước 1/3
+            </div>
+          </div>
+
         </div>
         <div class="col-lg-6">
           <img src="../assests/imgs/posterlogin.png" class="img-fluid" alt="">
