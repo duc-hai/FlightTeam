@@ -26,7 +26,7 @@
     <div class="container">
       <div class="row no-gutters" style="box-shadow: 0px 12px 18px rgb(0 0 0 / 6%);">
         <div id="content" class="col-lg-6 px-5 pt-5">
-          <img src="../assests/imgs/logo.png" class="img-logo mb-3" style="margin-left: auto; margin-right: auto;">
+          <a href="../index.php" style="margin-left: auto; margin-right: auto;"><img src="../assests/imgs/logo.png" class="img-logo mb-3"></a>
 
           <form id="formSignup">
             <div class="form-row">
@@ -55,7 +55,7 @@
                 <button id="btnSignUp" type="button" class="btn btn-block mt-2" onclick="checkValid ()">Đăng ký</button>
               </div>
             </div>
-            <p class="text-center mt-3">Bạn đã có tài khoản? <a href="#">Đăng nhập ngay</a></p>
+            <p class="text-center mt-3">Bạn đã có tài khoản? <a href="signin.php">Đăng nhập ngay</a></p>
           </form>
 
           <div id="progress" class="progress mb-3 mt-2" style="width: 70%; margin:auto">

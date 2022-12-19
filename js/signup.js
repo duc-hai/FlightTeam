@@ -220,7 +220,7 @@ function completeSignup() {
           <h5 class="text-center">Tạo mật khẩu</h5>
           <div class="form-row">
             <div class="col-lg-10 col-md-9 col-sm-9">
-              <input type="password" id="password" class="form-control my-2 p-2" placeholder="Nhập mật khẩu" name="password">
+              <input type="password" onkeyup="checkPassword()" id="password" class="form-control my-2 p-2" placeholder="Nhập mật khẩu" name="password">
             </div>
           </div>
 
