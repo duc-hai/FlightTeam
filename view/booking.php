@@ -39,7 +39,7 @@
         // }
         // });
 
-        location.href = "../controller/BookingTicketController.php?action=searchFlight";
+        // location.href = "../controller/BookingTicketController.php?action=searchFlight";
     }
 </script>
 <body>  

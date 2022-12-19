@@ -161,20 +161,24 @@
         public static function searchFlight ($startPlace, $endDate, $startDate) {
             $conn = connection::connectToDatabase();
 
-            $sql = "SELECT MACHUYENBAY, TENMAYBAY, NGAYDEN FROM CHUYENBAY WHERE date(ngaydi) = '2022-11-11'";
+            $sql = "SELECT * FROM CHUYENBAY WHERE date(ngaydi) = '$startPlace'";
             $rel = $conn->query($sql);
 
             $data = [];
             while ($r = $rel ->fetch_assoc()) {
             $masanbay = Flight::getMaSanBay($r["machuyenbay"]);
-            $data[] = ["machuyenbay" => $r["machuyenbay"], "tenmaybay" => $r["tenmaybay"], "ngayden" => $r["ngayden"]];
+            if (count($masanbay) == 0) {
+                $masanbay[0] = "";
+                $masanbay[1] = "";
+            }
+            $data[] = ["machuyenbay" => $r["machuyenbay"], "tenmaybay" => $r["tenmaybay"], "ngayden" => $r["ngayden"], "masanbaydi" => $masanbay[0], "masanbayden" => $masanbay[1]];
             }
             return $data;
         }
 
         public static function getMaSanBay ($machuyenbay) {
             $conn = connection::connectToDatabase ();
-            $sql = "SELECT MASANBAY FROM `chitietchuyenbay` WHERE MACHUYENBAY = '$machuyenbay' LIMIT 2";
+            $sql = "SELECT * FROM `chitietchuyenbay` WHERE MACHUYENBAY = '$machuyenbay' LIMIT 2";
             $rel = $conn->query($sql);
             $data = array();
             $i = 0;
