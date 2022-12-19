@@ -12,7 +12,7 @@ $(document).ready(function () {
             document.getElementById("btnSignUp").click();
         }
     })
-
+    //Add enter hotkey
     document.getElementById("OTP_code").addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -30,6 +30,7 @@ function revEmailMessErr() {
     $("#error-email").css("display", "none");
 }
 
+//OTP contains 6 digit of number, so must force input type is number
 function revErr(event) {
     $("#error-otp").css("display", "none");
     var asci = event.which ? event.which : event.keyCode;
@@ -37,6 +38,7 @@ function revErr(event) {
     return true;
 }
 
+//Input of phone number must is number from 0 to 9
 function checkNumber(event) {
     //Remove error message
     $("#duplPhone").css("display", "none");
@@ -88,10 +90,11 @@ function checkValid() {
         }
     });
 }
-
+var phoneNumber = "";
 //Action send OTP to phone number
 function sendOTP() {
     var sdt = $("#phone").val();
+    phoneNumber = sdt;
     $.ajax({
         type: 'POST',
         url: '../controller/AccountController.php',
@@ -139,10 +142,29 @@ function show_layout_verify() {
     setInterval(setTimeLap, 1000);
 }
 
+// Resend OTP to phone when time out
 function resendOTP () {
-
+    if (document.getElementById("time-lapse").innerHTML != "(0) ") {
+        return;
+    }
+    $.ajax({
+        type: 'POST',
+        url: '../controller/AccountController.php',
+        dataType: 'text',
+        data: "phone_verify=" + phoneNumber,
+        success: function (data, status) {
+            if (data != "success") {
+                alert(data);
+            }
+        },
+        error: function (data) {
+            $('#modalError').modal('show');
+        }
+    });
+    document.getElementById("time-lapse").innerHTML = "(120)";
 }
 
+//Set time lapse to resend OTP
 function setTimeLap () {
     var time = document.getElementById("time-lapse").innerHTML;
     
@@ -156,6 +178,7 @@ function setTimeLap () {
 }
 
 
+//Verify OTP from server
 // open cmt 
 function verifyOTP() {
     var otp = $("#OTP_code").val();
@@ -180,6 +203,7 @@ function verifyOTP() {
     });
 }
 
+//Layout save account
 function completeSignup() {
     var layout = `
     <form id="formComplete" action="../controller/AccountController.php" method="post">
@@ -236,6 +260,8 @@ function completeSignup() {
     $("#formVerify").remove();
     $("#content").append(layout);
 }
+
+//Check whether two passwords is correct
 function checkPassword() {
     var pass = $("#password").val().trim();
     var veri_pass = $("#pass_veri").val().trim();

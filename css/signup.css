@@ -116,3 +116,11 @@ body {
     background-image: url(../assests/imgs/background-signup.jfif);
     background-size: cover;
 }
+
+.disabled {
+    pointer-events: none;
+}
+
+.active {
+    pointer-events: auto;
+}

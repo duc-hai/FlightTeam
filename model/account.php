@@ -54,7 +54,7 @@
             session_start();
             $_SESSION["OTP"] = $OTP;
             $content = "Ma OTP xac thuc dang ky tai khoan cua ban la: $OTP";
-            $response = $smsAPI->sendSMS($phones, $content, $type, $sender); //Send OTP
+            // $response = $smsAPI->sendSMS($phones, $content, $type, $sender); //Send OTP
         }
 
         //In case, the random number has less than 6 digits, we must add 0 digits before that number.
@@ -67,6 +67,7 @@
             return $num;
         }
 
+        //Check whether OTP is correct
         public static function verifyOTP ($otp) {
             session_start();
             if ($_SESSION["OTP"] == $otp)
@@ -74,6 +75,7 @@
             return false;
         }
 
+        //Sign up the account
         public static function createAccount ($phone, $password, $fullname, $dateofbirth, $passport, $national, $email) {
             $conn = connection::connectToDatabase ();
             $sql = "INSERT INTO `KHACHHANG` (sdt, matkhau, hoten, ngaysinh, cccd_passport, quoctich, email) VALUES ('$phone', '$password', '$fullname', '$dateofbirth', '$passport', '$national', '$email')";
