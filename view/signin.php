@@ -17,7 +17,11 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    body {
+    opacity: 0.9;
+    background-image: url(../assests/imgs/background-signup.jfif);
+    background-size: cover;
+    }
     .row {
       background-color: #CFF3FF;
       ;

@@ -140,6 +140,16 @@ function show_layout_verify() {
     $("#formSignup").remove();
     $("#content").append(layout_verify);
     setInterval(setTimeLap, 1000);
+
+    $("#progress").remove ();
+    $("#content").append(`
+        <div id="progress" class="progress mb-3 mt-2" style="width: 70%; margin:auto">
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="66.6"
+        aria-valuemin="0" aria-valuemax="100" style="width:66.6%">
+        Bước 2/3
+        </div>
+    </div>
+    `);
 }
 
 // Resend OTP to phone when time out
@@ -259,6 +269,17 @@ function completeSignup() {
     `;
     $("#formVerify").remove();
     $("#content").append(layout);
+    $("#progress").remove();
+    $("#content").append(
+        `
+        <div id="progress" class="progress mb-3 mt-2" style="width: 70%; margin:auto">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100" style="width:100%">
+            Bước 3/3
+            </div>
+        </div>
+        `
+    );
 }
 
 //Check whether two passwords is correct
