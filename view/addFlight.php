@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="../view/flightManager.php">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -74,7 +74,7 @@
             <div class="col-sm-5 col-md-5 col-lg-4">
                 <div  class="col-sm-12 col-md-12 col-lg-11">
                     <h3 style="margin-top: 2%;">Thêm chuyến bay</h3>
-                    <form action="/FlightTeam/controller/FlightManagerControler.php?action=addFlight" method="post">
+                    <form action="../controller/FlightManagerControler.php?action=addFlight" method="post">
                         <label>Mã chuyến bay</label><br>    
                         <input type="text" class="form-control" name="machuyenbay"><br>
                         <label>Tên máy bay</label><br>
