@@ -1,72 +1,9 @@
 <?php
+    require_once ('connection.php');    
     class Flight{
-        // public $idBooking;
-        // public $seatPosition;
-        // public $enntranceGate;   
-        // public $ticketType;
-        // public $idFlight;
-        // public $airName;
-        // public $flightDate;
-        // public $landingDay;
-        // public $priceTicket;
-
-        // public $customePhoneNumber;
-        // public $nameCustomer;
-        // public $customerBirthday;
-        // public $cccd_passport;
-        // public $typeCustomer;
-        // public $baggageNumber;
-        // public $bookingDate;
-
-        // public $Iddepartureair;
-        // public $IdEndAir;
-        
-        // public $idpay;
-        // public $payerName;
-        // public $payMethods;
-        // public $paymentdate;
-
-        // public $datein;
-        // public $dateout;
-
-
-        // public function __construct ($idBooking, $seatPosition,$enntranceGate, $idFlight,$airName,$flightDate,$landingDay,$priceTicket,
-        // $customePhoneNumber,$nameCustomer,$customerBirthday,$cccd_passport,$typeCustomer,$baggageNumber,$bookingDate,$idpay,$payerName,
-        // $payMethods,$paymentdate,$datein,$dateout,$Iddepartureair,$IdEndAir) {
-            
-        //     $this->idBooking = $idBooking;
-        //     $this->seatPosition = $seatPosition;
-        //     $this->enntranceGate = $enntranceGate;
-        //     $this->ticketType = $ticketType;
-        //     $this->idFlight = $idFlight;
-        //     $this->airName = $airName;
-        //     $this->flightDate = $flightDate;
-        //     $this->landingDay = $landingDay;
-        //     $this->priceTicket = $priceTicket;
-
-        //     $this->customePhoneNumber = $customePhoneNumber;
-        //     $this->nameCustomer = $nameCustomer;
-        //     $this->customerBirthday = $customerBirthday;
-        //     $this->cccd_passport = $cccd_passport;
-        //     $this->typeCustomer = $typeCustomer;
-        //     $this->baggageNumber = $baggageNumber ;
-        //     $this->bookingDate = $bookingDate;
-
-        //     $this->idpay = $idpay;
-        //     $this->payerName = $payerName;
-        //     $this->payMethods = $payMethods;
-        //     $this->paymentdate = $paymentdate;
-
-        //     $this->datein = $datein;
-        //     $this->dateount = $dateout;
-
-        //     $this->Iddepartureair = $Iddepartureair;
-        // }
-
         public static function getAllTicket() {
-           require_once ('connection.php');
             $conn = connection::connectToDatabase ();
-
+            //tạo câu truy vấn lấy dữ kiệu của vé máy bay
             $sql = "SELECT vb.madatcho,vb.vitrighe,vb.congvao,vb.tonggiave,vb.loaive,cb.machuyenbay,cb.tenmaybay,cb.ngaydi,cb.ngayden
             FROM vemaybay as vb, chuyenbay as cb
             WHERE vb.machuyenbay = cb.machuyenbay";
@@ -81,9 +18,8 @@
         }
 
         public static function getHistoryTicket(){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
-
+            //tạo câu truy vấn lấy dữ liệu lịch sử bán vé
             $sql = "SELECT * FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich";
 
             $result = $conn -> query ($sql);
@@ -98,9 +34,8 @@
             return $data;
         }
         public static function getRevenue($datein,$dateout){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
-
+              //tạo câu truy vấn lấy dữ liệu doanh thu
             $sql = "SELECT *FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich and ngaydat >= '$datein' AND ngaydat <= '$dateout'";
 
             $result = $conn -> query ($sql);
@@ -115,7 +50,7 @@
             return $data;
         }
         public static function getInforHistory($idBooking){
-            require_once ('connection.php');
+            //tạo câu truy vấn chi tiết lịch sử mua vé
             $conn = connection::connectToDatabase ();
             $sql = "SELECT * FROM vemaybay,thanhtoan WHERE vemaybay.magiaodich = thanhtoan.magiaodich and madatcho = '$idBooking'";
 
@@ -132,8 +67,8 @@
         }
 
         public static function getflight(){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
+          //tạo câu truy vấn lấy dữ liệu các chuyến bay
             $sql = "SELECT * FROM chitietchuyenbay,chuyenbay WHERE chitietchuyenbay.machuyenbay = chuyenbay.machuyenbay";
             $result = $conn -> query ($sql);
             $data = [];
@@ -144,24 +79,21 @@
         }
 
         public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
+                //thêm dữ liệu cho các bảng liên quan đến chuyến bay
             $sql = "INSERT INTO `chuyenbay`(`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) 
             VALUES ('$idFlight','$airName','$flightDate','$landingDay')";
             $result = $conn -> query ($sql);
-
             $sql2 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
             VALUES ('$Iddepartureair','$idFlight')";
             $result = $conn -> query ($sql2);
-            
+
             $sql3 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
             VALUES ('$IdArrivalAir','$idFlight')";
             $result = $conn -> query ($sql3);
         }
-        
 
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
-            require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "UPDATE `chuyenbay` SET `tenmaybay`='$airName',`ngaydi`='$flightDate',`ngayden`='$landingDay'
             WHERE machuyenbay = '$idFlight'";
@@ -169,10 +101,45 @@
             $sql2 = "UPDATE `chitietchuyenbay` SET `masanbay`='$Iddepartureair'  WHERE machuyenbay = '$idFlight'";
             $result = $conn -> query ($sql2);
         }
-        public static function getAir(){
-            require_once ('connection.php');
+
+
+        public static function searchFlight ($startPlace, $endDate, $startDate) {
+            $conn = connection::connectToDatabase();
+            // tìm kiếm chuyến bay
+            $sql = "SELECT * FROM CHUYENBAY WHERE date(ngaydi) = '$startPlace'";
+            $rel = $conn->query($sql);
+
+            $data = [];
+            while ($r = $rel ->fetch_assoc()) {
+            $masanbay = Flight::getMaSanBay($r["machuyenbay"]);
+            if (count($masanbay) == 0) {
+                $masanbay[0] = "";
+                $masanbay[1] = "";
+            }
+            $data[] = ["machuyenbay" => $r["machuyenbay"], "tenmaybay" => $r["tenmaybay"], "ngayden" => $r["ngayden"], "masanbaydi" => $masanbay[0], "masanbayden" => $masanbay[1]];
+            }
+            return $data;
+        }
+
+        public static function getMaSanBay ($machuyenbay) {
+            // lấy mã sân bay đi và sân bay đến
             $conn = connection::connectToDatabase ();
-            $sql = "SELECT `masanbay`FROM `sanbay`";
+            $sql = "SELECT * FROM `chitietchuyenbay` WHERE MACHUYENBAY = '$machuyenbay' LIMIT 2";
+            $rel = $conn->query($sql);
+            $data = array();
+            $i = 0;
+            while ($vari = $rel-> fetch_array()) {
+                $data[$i] = $vari["masanbay"];
+                $i = $i + 1;
+            }
+            return $data;
+        }
+        public static function getAir(){
+            // lấy mã của các sân bay
+            $conn = connection::connectToDatabase ();
+
+            $sql = "SELECT `masanbay` FROM `sanbay`";
+
             $result = $conn -> query ($sql);
             $data = [];
             while ($r = $result -> fetch_assoc ()) {
@@ -180,6 +147,6 @@
             }
             return $data;
         }
-        
     }
+    
 ?>

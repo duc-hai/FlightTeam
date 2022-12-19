@@ -81,8 +81,8 @@ require_once('../model/Flight.php');
         $flightDate = $_POST['ngaydi'];
         $landingDay = $_POST['ngayden'];
         $Iddepartureair = $_POST['masanbaydi'];
-        $IdEndAir = $_POST['masanbayden'];
-        if($idFlight==''||$airName==''||$flightDate==''|| $landingDay==''||$Iddepartureair==''||$IdEndAir==''){
+        $$IdArrivalAir = $_POST['masanbayden'];
+        if($idFlight==''||$airName==''||$flightDate==''|| $landingDay==''||$Iddepartureair==''||$IdArrivalAir==''){
             echo '<script>alert("Vui lòng nhập đủ thông tin")</script>';
         }
         if($Iddepartureair ==  $IdEndAir){

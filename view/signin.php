@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../css/loading.css">
   <title>Đăng nhập</title>
   <style>
     * {
@@ -17,11 +17,13 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-    opacity: 0.9;
-    background-image: url(../assests/imgs/background-signup.jfif);
-    background-size: cover;
+      opacity: 0.9;
+      background-image: url(../assests/imgs/background-signup.jfif);
+      background-size: cover;
     }
+
     .row {
       background-color: #CFF3FF;
       ;
@@ -63,55 +65,63 @@
       right: 1rem;
     }
   </style>
-   <script>
-      $(document).ready(function () {
-        $('.eye').click(function () {
-          $(this).toggleClass('open');
-          $(this).children('i').toggleClass('fa-eye-slash fa-eye');
-          if ($(this).hasClass('open')) {
-            $(this).prev().attr('type', 'text');
-          } else {
-            $(this).prev().attr('type', 'password');
-          }
-        });
-      });
+  <script>
 
-      function checkSignin() {
-        var phone = $('#phone').val();
-        var password = $('#password').val();
-        var temp = "phone=" + phone + "&password=" + password;
-        // window.alert(temp);
-        $.ajax({
-          type: 'POST',
-          url: '../controller/AccountController.php',
-          dataType: 'text',
-          data: temp,
-          success: function (data, status) {
-            if (data == 'true'){
-              $('#submit').click();
-            }else if (data == '0'){
-              $('#submit2').click();
-            }else{
-              document.querySelector('.error').style.display = 'block';
-            }
-              // e.preventDefault(); 
-          },
-          error: function(data){
-            $('#modalError').modal('show');
+    $(window).bind("load", function () {
+      jQuery("#status").fadeOut();
+      jQuery("#loader").fadeOut();
+    });
+
+    $(document).ready(function () {
+      $('.eye').click(function () {
+        $(this).toggleClass('open');
+        $(this).children('i').toggleClass('fa-eye-slash fa-eye');
+        if ($(this).hasClass('open')) {
+          $(this).prev().attr('type', 'text');
+        } else {
+          $(this).prev().attr('type', 'password');
+        }
+      });
+    });
+
+    function checkSignin() {
+      var phone = $('#phone').val();
+      var password = $('#password').val();
+      var temp = "phone=" + phone + "&password=" + password;
+      // window.alert(temp);
+      $.ajax({
+        type: 'POST',
+        url: '../controller/AccountController.php',
+        dataType: 'text',
+        data: temp,
+        success: function (data, status) {
+          if (data == 'true') {
+            $('#submit').click();
+          } else if (data == '0') {
+            $('#submit2').click();
+          } else {
+            document.querySelector('.error').style.display = 'block';
           }
-        });
-      }
-    </script>
+          // e.preventDefault(); 
+        },
+        error: function (data) {
+          $('#modalError').modal('show');
+        }
+      });
+    }
+  </script>
 </head>
 
 <body>
-<form action="home.php" style = "display: none">
-    <input type="submit" id ="submit">
-</form>
-<form action="flightManager.php" style = "display: none">
-    <input type="submit" id ="submit2">
-</form>
-  <div class="Form my-4 mx-5">
+<div id='status'></div>
+  <div id='loader'></div>
+  <form action="home.php" style="display: none">
+    <input type="submit" id="submit">
+  </form>
+  <form action="flightManager.php" style="display: none">
+    <input type="submit" id="submit2">
+  </form>
+  <div class="Form mt-5">
     <div class="container">
       <div class="row no-gutters">
         <div class="col-lg-6 px-5 pt-5">
