@@ -136,7 +136,7 @@
               </div>
             </div>
             <p class="text-right mr-5 mt-2"><a href="#">Quên mật khẩu?</a></p>
-            <p class="text-center">Bạn chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+            <p class="text-center">Bạn chưa có tài khoản? <a href="signup.php">Đăng ký ngay</a></p>
           </form>
         </div>
         <div class="col-lg-6">

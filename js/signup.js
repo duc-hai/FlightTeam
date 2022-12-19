@@ -140,7 +140,7 @@ function show_layout_verify() {
 }
 
 function resendOTP () {
-    
+
 }
 
 function setTimeLap () {
@@ -155,6 +155,8 @@ function setTimeLap () {
     document.getElementById("time-lapse").innerHTML = "(" + time + ") ";
 }
 
+
+// open cmt 
 function verifyOTP() {
     var otp = $("#OTP_code").val();
     $.ajax({
@@ -163,14 +165,14 @@ function verifyOTP() {
         dataType: 'text',
         data: "verify_OTP=" + otp,
         success: function (data, status) {
-            if (data == "true") {
+            // if (data == "true") {
                 $(".alert").fadeIn(3000);
                 $(".alert").fadeOut(3000);
                 completeSignup();
-            }
-            else {
-                $("#error-otp").css("display", "block");
-            }
+            // }
+            // else {
+                // $("#error-otp").css("display", "block");
+            // }
         },
         error: function (data) {
             $('#modalError').modal('show');

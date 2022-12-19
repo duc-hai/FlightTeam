@@ -79,6 +79,7 @@
             $sql = "INSERT INTO `KHACHHANG` (sdt, matkhau, hoten, ngaysinh, cccd_passport, quoctich, email) VALUES ('$phone', '$password', '$fullname', '$dateofbirth', '$passport', '$national', '$email')";
 
             $result = $conn->query($sql);
+            return $result;
         }
         
     }

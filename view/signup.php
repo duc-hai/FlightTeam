@@ -22,7 +22,7 @@
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     Xác nhận mã OTP thành công.
   </div>
-  <div class="Form my-4 mx-5">
+  <div class="Form mt-5">
     <div class="container">
       <div class="row no-gutters">
         <div id="content" class="col-lg-6 px-5 pt-5">
