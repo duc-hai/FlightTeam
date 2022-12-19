@@ -78,7 +78,8 @@
     require_once("../model/connection.php");
     $conn = connection::connectToDatabase ();
     if(isset( $_GET["search"])) {
-        $sql = "SELECT * FROM vemaybay where madatcho like'%$_GET[search]%' " ;
+        $idT = $_GET['search'];
+        $sql = "SELECT * FROM vemaybay where madatcho = '$idT'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

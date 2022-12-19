@@ -143,16 +143,22 @@
             return $data;
         }
 
-        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
+        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir){
             require_once ('connection.php');
             $conn = connection::connectToDatabase ();
             $sql = "INSERT INTO `chuyenbay`(`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) 
             VALUES ('$idFlight','$airName','$flightDate','$landingDay')";
             $result = $conn -> query ($sql);
+
             $sql2 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
             VALUES ('$Iddepartureair','$idFlight')";
             $result = $conn -> query ($sql2);
+            
+            $sql3 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
+            VALUES ('$IdArrivalAir','$idFlight')";
+            $result = $conn -> query ($sql3);
         }
+        
 
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
             require_once ('connection.php');
@@ -163,7 +169,17 @@
             $sql2 = "UPDATE `chitietchuyenbay` SET `masanbay`='$Iddepartureair'  WHERE machuyenbay = '$idFlight'";
             $result = $conn -> query ($sql2);
         }
+        public static function getAir(){
+            require_once ('connection.php');
+            $conn = connection::connectToDatabase ();
+            $sql = "SELECT `masanbay`FROM `sanbay`";
+            $result = $conn -> query ($sql);
+            $data = [];
+            while ($r = $result -> fetch_assoc ()) {
+                $data[] = ["idAir"=> $r["masanbay"]];
+            }
+            return $data;
+        }
         
     }
-    
 ?>

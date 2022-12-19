@@ -24,11 +24,15 @@ require_once('../model/Flight.php');
             $result = Flight::getInforHistory($idBooking);
             die (json_encode (array('code' => 0, 'data' => $result)));
         }
-        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair) {
-            Flight::addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
+        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir) {
+            Flight::addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir);
         }
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
             Flight::editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
+        }
+        public static function getAir(){
+            $result = Flight::getAir();
+            die (json_encode (array('code' => 0, 'data' => $result)));
         }
 
     }
@@ -58,12 +62,18 @@ require_once('../model/Flight.php');
         $flightDate = $_POST['ngaydi'];
         $landingDay = $_POST['ngayden'];
         $Iddepartureair = $_POST['masanbaydi'];
-        $IdEndAir = $_POST['masanbayden'];
-        if($idFlight==''||$airName==''||$flightDate==''|| $landingDay==''||$Iddepartureair==''||$IdEndAir==''){
+        $IdArrivalAir = $_POST['masanbayden'];
+        if($idFlight==''||$airName==''||$flightDate==''|| $landingDay==''||$Iddepartureair==''||$IdArrivalAir ==''){
             echo '<script>alert("Vui lòng nhập đủ thông tin")</script>';
-        }else
-        $tikCtr -> addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
-        header('location:../view/flightManager.php');
+        }
+        if($Iddepartureair ==  $IdArrivalAir){
+            echo '<script>alert("Mã sân bay đi phải khác mã sân bay đến")</script>';
+        }
+        else{
+            $tikCtr -> addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir);
+            header('location:../view/flightManager.php');
+        }
+        
     }
     if (isset($_GET['action']) && $_GET['action'] == "editFlight") {
         $idFlight = $_POST['machuyenbay']; 
@@ -74,10 +84,16 @@ require_once('../model/Flight.php');
         $IdEndAir = $_POST['masanbayden'];
         if($idFlight==''||$airName==''||$flightDate==''|| $landingDay==''||$Iddepartureair==''||$IdEndAir==''){
             echo '<script>alert("Vui lòng nhập đủ thông tin")</script>';
-            die();
-        }else
-        $tikCtr -> editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
-        header('location:/FlightTeam/view/flightManager.php');
+        }
+        if($Iddepartureair ==  $IdEndAir){
+            echo '<script>alert("Mã sân bay đi phải khác mã sân bay đến")</script>';
+        }else{
+            $tikCtr -> editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair);
+            header('location:/FlightTeam/view/flightManager.php');
+        }
+    }
+    if (isset($_GET['action']) && $_GET['action'] == "getAir") {
+        $tikCtr -> getAir();
     }
 
 ?>

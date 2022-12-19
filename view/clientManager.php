@@ -11,7 +11,31 @@
 </head>
 
 <body>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+            <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
+                <a class="navbar-brand" href="flightManager.php">FlightTeam Air</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Admin
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="countItemCart" class="nav-link" href=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>  
     <!-- Main content -->
     <div class="container">
         <h1 style="margin-top: 3%;">Danh sách Khách hàng</h1>
