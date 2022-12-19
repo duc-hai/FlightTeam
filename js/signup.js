@@ -30,7 +30,7 @@ function revEmailMessErr() {
     $("#error-email").css("display", "none");
 }
 
-function revErr() {
+function revErr(event) {
     $("#error-otp").css("display", "none");
     var asci = event.which ? event.which : event.keyCode;
     if (asci > 31 && (asci < 48 || asci > 57)) return false;
@@ -89,6 +89,7 @@ function checkValid() {
     });
 }
 
+//Action send OTP to phone number
 function sendOTP() {
     var sdt = $("#phone").val();
     $.ajax({
@@ -106,8 +107,10 @@ function sendOTP() {
         }
     });
     show_layout_verify();
+    document.getElementById("time-lapse").innerHTML = "(120)";
 }
 
+//Show layout verify OTP
 function show_layout_verify() {
     var layout_verify = `
     <form id="formVerify">
@@ -116,7 +119,7 @@ function show_layout_verify() {
             Vui lòng kiểm tra và nhập mã OTP tại đây.</p>
           <div class="form-row">
             <div class="col-lg-10 col-md-9 col-sm-9">
-              <input id="OTP_code" type="text" class="form-control my-2 p-2" placeholder="Mã xác thực" onkeypress="revErr()">
+              <input id="OTP_code" type="text" class="form-control my-2 p-2" placeholder="Mã xác thực" onkeypress="revErr(event)">
               <p id="error-otp" class="error-mess"> *Mã xác thực không đúng. Vui lòng thử lại</p>
             </div>
           </div>
@@ -127,11 +130,29 @@ function show_layout_verify() {
             </div>
           </div>
 
-          <p class="text-center mt-5">Chưa nhận được mã xác thực <a style="color: #348efe; cursor: pointer;" onclick="sendOTP()">Gửi lại</a></p>
+          <p class="text-center mt-5">Chưa nhận được mã xác thực 
+          <span id="time-lapse">(120) </span><a style="color: #348efe; cursor: pointer;" onclick="resendOTP()">Gửi lại</a></p>
     </form>
     `;
     $("#formSignup").remove();
     $("#content").append(layout_verify);
+    setInterval(setTimeLap, 1000);
+}
+
+function resendOTP () {
+    
+}
+
+function setTimeLap () {
+    var time = document.getElementById("time-lapse").innerHTML;
+    
+    time = time.replace(")", "");
+    time = time.replace("(", "");
+    time = Number (time);
+    if (time != 0) {
+        time = time - 1;
+    }
+    document.getElementById("time-lapse").innerHTML = "(" + time + ") ";
 }
 
 function verifyOTP() {
