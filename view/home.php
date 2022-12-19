@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -109,14 +108,17 @@
             </div>
         </div>
 
-            <div class="col-4 form-search p-5 border ">
-                <form action="">
+            <div class="col-4 form-search p-5 border " style="border-radius: 10%;">
+                <form action="../view/booking.php">
                     <div class="row">
                         <div class="col-4">
                             <p>Điểm đi: </p>
                         </div>
                         <div class="col-8">
-                            <input id="noidi" type="text" name="noidi" class="form-control" placeholder="Nơi đi">
+                            <select id="list-air" class="custom-select" id="noidi" name="noidi">
+                                <option>Chọn nơi đi</option>
+
+                            </select>   
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -124,7 +126,9 @@
                             <p>Điểm đến: </p>
                         </div>
                         <div class="col-8">
-                            <input id="noiden" type="text" name="noiden" class="form-control" placeholder="Nơi đến">
+                            <select id="list-air2" class="custom-select" id="noiden" name="noiden">
+                                <option>Chọn nơi đến</option>
+                            </select>   
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -133,7 +137,7 @@
                         </div>
                         <div class="col-4 d-flex">
                             <div class="col-3 p-0 mt-2">
-                                <input id="oneway" type="radio" class="form-control">
+                                <input id="oneway" type="radio" class="form-control" name = "loaive" value ="một chiều">
                             </div>
                             <div class="col-9 p-0">
                                 <p class="p-0">Một chiều</p>
@@ -141,7 +145,7 @@
                         </div>
                         <div class="col-4 d-flex">
                             <div class="col-3 p-0 mt-2">
-                                <input id="round-trip" type="radio" class="form-control">
+                                <input id="round-trip" type="radio" class="form-control"name = "loaive" value ="khứ hồi">
                             </div>
                             <div class="col-9 p-0">
                                 <p class="p-0">Khứ hồi</p>
@@ -150,10 +154,12 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-6">
-                            <input id="date-left" type="text" class="form-control" placeholder="Ngày đi">
+                            <p class="p-0">Ngày đi</p>
+                            <input id="date-left" type="date" class="form-control" placeholder="Ngày đi">
                         </div>
                         <div class="col-6">
-                            <input id="date-come" type="text" class="form-control" placeholder="Ngày về">
+                            <p class="p-0">Ngày về</p>
+                            <input id="date-come" type="date" class="form-control" placeholder="Ngày về">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -297,8 +303,34 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+<script>
+     $(document).ready(function () {
+        get_all_Air();
+    });
+    function get_all_Air() {
+        $.ajax({
+        url: "../controller/FlightManagerControler.php?action=getAir",
+        dataType: 'json',
+            success: function (data) { 
+                show_Air(data);
+            },
+            error: function (data) {
+            }
+        })
+    }
+    function show_Air(data) {
+        for (let i = 0; i < data.data.length; i++) {
+            let row = data.data[i];
+            let table =  `
+            <option value="`+row.idAir+`">`+row.idAir+`-`+row.nameCity+`</option>`
+            $("#list-air").append(table);
+            $("#list-air2").append(table);
+        }
+          
+    }
+</script>

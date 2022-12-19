@@ -138,12 +138,12 @@
             // lấy mã của các sân bay
             $conn = connection::connectToDatabase ();
 
-            $sql = "SELECT `masanbay` FROM `sanbay`";
+            $sql = "SELECT * FROM `sanbay`";
 
             $result = $conn -> query ($sql);
             $data = [];
             while ($r = $result -> fetch_assoc ()) {
-                $data[] = ["idAir"=> $r["masanbay"]];
+                $data[] = ["idAir"=> $r["masanbay"],"nameCity"=> $r["thanhpho"]];
             }
             return $data;
         }
