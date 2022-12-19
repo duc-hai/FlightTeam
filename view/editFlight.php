@@ -78,15 +78,22 @@
                         <label>Mã chuyến bay</label><br>    
                         <input type="view" class="form-control" name="machuyenbay" value="<?php echo $_GET['idFlight'] ?>"readonly><br>
                         <label>Tên máy bay</label><br>
-                        <input type="text" class="form-control" name="tenmaybay"><br>
+                        <select class="form-select" aria-label="Default select example" name="tenmaybay">
+                            <option value="Boeing 777">Boeing 777</option>
+                            <option value="Airbus A330">Airbus A330</option>
+                            <option value="Fokker 70">Fokker 70</option>
+                            <option value="ATR 72">ATR 72</option>
+                        </select>
                         <label>Ngày khởi hành</label><br>
-                        <input type="date" class="form-control" name="ngaydi" ><br>
+                        <input type="date" class="form-control" name="ngaydi"><br>
                         <label>Ngày đến</label><br>
                         <input type="date" class="form-control" name="ngayden"><br>
                         <label>Mã sân bay đi</label><br>
-                        <input type="text" class="form-control" name="masanbaydi"><br>
+                        <select id="list-air" class="form-select" aria-label="Default select example" name="masanbaydi">
+                        </select>
                         <label>Mã sân bay đến</label><br>
-                        <input type="text" class="form-control" name="masanbayden"><br>
+                        <select id="list-air2" class="form-select" aria-label="Default select example" name="masanbayden">
+                        </select>
                         <button type="sumit"class="btn btn-primary">Lưu thay đổi</button>
                     </form>
                 </div>
@@ -101,3 +108,29 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        get_all_Air();
+    });
+    function get_all_Air() {
+        $.ajax({
+        url: "../controller/FlightManagerControler.php?action=getAir",
+        dataType: 'json',
+            success: function (data) { 
+                show_Air(data);
+            },
+            error: function (data) {
+            }
+        })
+    }
+    function show_Air(data) {
+        for (let i = 0; i < data.data.length; i++) {
+            let row = data.data[i];
+            let table =  `
+            <option value="`+row.idAir+`">`+row.idAir+`</option>`
+            $("#list-air").append(table);
+            $("#list-air2").append(table);
+        }
+          
+    }
+</script>

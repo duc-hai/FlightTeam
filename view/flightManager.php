@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
     <link rel="icon" href="../assests/imgs/logo.png">    
         <title>Trang chủ - Admin</title>
     <style>
@@ -35,29 +37,29 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">FlightTeam Air</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="countItemCart" class="nav-link" href=""></a>
-                    </li>
-                </ul>
+            <div class="container">
+            <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
+                <a class="navbar-brand" href="#">FlightTeam Air</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Admin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="countItemCart" class="nav-link" href=""></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>  
         <div class="row">
             <div class="col-lg-2">
                 <div id="danhmuc">
@@ -65,10 +67,10 @@
                     <div class="list-group">
                         <a  class='list-group-item' onclick="get_all_tickets()" >Thông tin vé máy bay</a>
                         <a class='list-group-item' onclick="get_history_tickets()" >Lịch sử mua vé</a>
-                        <a  class='list-group-item' href="revenue.php" >doanh thu</a>
+                        <a  class='list-group-item' href="revenue.php" style="color: black;" >doanh thu</a>
                         <a  class='list-group-item' onclick="get_flight()" >Quản lý chuyến bay</a>
-                        <a  class='list-group-item' href="clientManager.php">Quản lý khách hàng</a>
-                        <a  class='list-group-item' href="historyTicket.php">Lịch sử vé</a>
+                        <a  class='list-group-item' href="clientManager.php"style="color: black;">Quản lý khách hàng</a>
+                        <a  class='list-group-item' href="historyTicket.php"style="color: black;">Lịch sử vé</a>
                     </div>
                 </div>
             </div>
@@ -229,9 +231,10 @@
                 <tr>
                     <th>Mã chuyến bay</th>
                     <th>Tên Máy bay</th>
-                    <th>Ngày khởi hành</th>
+                    <th>Ngày đi</th>
                     <th>Ngày đến</th>
                     <th>Mã sân bay</th>
+                    <th></th>
                 </tr>
                 </thead>
                 </div>`

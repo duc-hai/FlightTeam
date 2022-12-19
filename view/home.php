@@ -50,9 +50,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse "  id="navbarSupportedContent">
-            <ul id="nav-custom" class="navbar-nav ml-auto " style="font-weight: 600;
-                                                    font-size: 24px;
-                                                    line-height: 40px;">
+            <ul id="nav-custom" class="navbar-nav ml-auto " style="font-weight: 600;font-size: 24px;line-height: 40px;">
               <li class="nav-item px-4">
                 <a class="nav-link active"  aria-current="page"  href="/">Lên kế hoạch</a>
               </li>

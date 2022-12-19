@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="icon" href="../assests/imgs/logo.png">
     <title>Document</title>
     <style>
@@ -44,7 +44,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+        <div class="container" >
+            <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill"> 
             <a class="navbar-brand" href="../view/flightManager.php">FlightTeam Air</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +53,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Admin</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href=""></a>
                     </li>
@@ -64,7 +68,7 @@
     </nav>
         <div class="row">
             <div class="col-lg-2">
-            <img src = "/FlightTeam/assests/imgs/logo.png" style="width:100% ;height:80% ;">
+            <img src = "/FlightTeam/assests/imgs/logo.png" style="width:100% ;height:80% ;margin-top:15%">
             </div>
             <div class="col-lg-4 col-md-10 col-lg-9">
                 <h1 style ="margin-top: 4%">Thống kê doanh thu<img src ="/FlightTeam/assests/imgs/bieudo.jpg" style="width:5% ;height:5% "></h1>
@@ -83,27 +87,28 @@
             <div class="col-lg-2"></div>
                 <div class="col-lg-4 col-md-10 col-lg-9">
                     <table id="list-ticket" class="table table-bordered">
-                    <thead>
-                        <tr class="header">
-                            <td>Mã đặt chỗ</td>
-                            <td>Tên khách hàng</td>
-                            <td>Ngày đặt vé</td>
-                            <td>Loại vé</td>
-                            <td>Ngày thanh toán</td>
-                            <td>Hình thức thanh toán</td>
-                            <td>Tổng tiền</td>
-                        </tr>  
-                    </thead>
+                        <thead>
+                            <tr>
+                                <td>Mã đặt chỗ</td>
+                                <td>Tên khách hàng</td>
+                                <td>Ngày đặt vé</td>
+                                <td>Loại vé</td>
+                                <td>Ngày thanh toán</td>
+                                <td>Hình thức thanh toán</td>
+                                <td>Tổng tiền</td>
+                            </tr>  
+                        </thead>
                 <div id="mainView"></div>
             </div>
         </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"><label style="font-size:large">Số lượng vé bán:</label><a id ='veban'></a></div>
-            <div class="col-lg-12"><label style="font-size:large">Tổng doanh thu:</label><a id ='doanhthu'></a></div><br>
+            <div class="col-lg-12"><label style="font-size:large">Số lượng vé bán:</label> <a id ='veban'></a></div>
+            <div class="col-lg-12"><label style="font-size:large">Tổng doanh thu: </label> <a id ='doanhthu'></a></div><br>
     </div>
 </body>
 </html> 
+
 <script>
     $(document).ready(function () {
         get_revenue();

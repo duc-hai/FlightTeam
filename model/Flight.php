@@ -139,15 +139,21 @@
             return $data;
         }
 
-        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
+        public static function addflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair,$IdArrivalAir){
             $conn = connection::connectToDatabase ();
             $sql = "INSERT INTO `chuyenbay`(`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) 
             VALUES ('$idFlight','$airName','$flightDate','$landingDay')";
             $result = $conn -> query ($sql);
+
             $sql2 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
             VALUES ('$Iddepartureair','$idFlight')";
             $result = $conn -> query ($sql2);
+            
+            $sql3 = "INSERT INTO `chitietchuyenbay`(`masanbay`, `machuyenbay`) 
+            VALUES ('$IdArrivalAir','$idFlight')";
+            $result = $conn -> query ($sql3);
         }
+        
 
         public static function editflight($idFlight,$airName,$flightDate,$landingDay,$Iddepartureair){
             $conn = connection::connectToDatabase ();
@@ -157,33 +163,6 @@
             $sql2 = "UPDATE `chitietchuyenbay` SET `masanbay`='$Iddepartureair'  WHERE machuyenbay = '$idFlight'";
             $result = $conn -> query ($sql2);
         }
-
-        public static function searchFlight ($startPlace, $startDate) {
-            $conn = connection::connectToDatabase();
-
-            $sql = "SELECT MACHUYENBAY, TENMAYBAY, NGAYDEN FROM CHUYENBAY WHERE date(ngaydi) = '2022-11-11'";
-            $rel = $conn->query($sql);
-
-            $data = [];
-            while ($r = $rel ->fetch_assoc()) {
-            $masanbay = Flight::getMaSanBay($r["machuyenbay"]);
-            $data[] = ["machuyenbay" => $r["machuyenbay"], "tenmaybay" => $r["tenmaybay"], "ngayden" => $r["ngayden"]];
-            }
-            return $data;
-        }
-
-        public static function getMaSanBay ($machuyenbay) {
-            $conn = connection::connectToDatabase ();
-            $sql = "SELECT MASANBAY FROM `chitietchuyenbay` WHERE MACHUYENBAY = '$machuyenbay' LIMIT 2";
-            $rel = $conn->query($sql);
-            $data = array();
-            $i = 0;
-            while ($vari = $rel-> fetch_array()) {
-                $data[$i] = $vari["masanbay"];
-                $i = $i + 1;
-            }
-            return $data;
-        }
+        
     }
-    
 ?>
