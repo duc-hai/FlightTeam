@@ -23,7 +23,7 @@ class AccountController {
     }
 
     public static function createAccount ($phone, $password, $fullname, $dateofbirth, $passport, $national, $email) {
-        account::createAccount($phone, $password, $fullname, $dateofbirth, $passport, $national, $email);
+        $rel = account::createAccount($phone, $password, $fullname, $dateofbirth, $passport, $national, $email);
     }
 }
 
@@ -60,15 +60,26 @@ if (isset($_POST['verify_OTP'])) {
 
 if (isset($_POST['saveAcc'])) {
     if (isset($_POST['password'])) {
+        $date = "";
+        $passport = "";
+        $nation = "";
         session_start();
-        $time = strtotime($_POST['dateOfBirth']);
-        if ($time) {
-            $date = date('Y/m/d', $time);
+        if (isset($_POST['dateOfBirth'])) {
+            $time = strtotime($_POST['dateOfBirth']);
+            if ($time) {
+                $date = date('Y/m/d', $time);
+            }
         }
-        else {
-            exit;
+     
+        if (isset($_POST['passport'])) {
+            $passport = $_POST['passport'];
         }
-        $accContrl->createAccount ($_SESSION['phone'], $_POST['password'], $_SESSION['name'], $date, $_POST['passport'], $_POST['nationality'], $_SESSION['email']);
+
+        if (isset($_POST['nationality'])) {
+            $nation = $_POST['nationality'];
+        }
+        echo $accContrl->createAccount ($_SESSION['phone'], $_POST['password'], $_SESSION['name'], $date, $passport, $nation, $_SESSION['email']);
+        echo " <script> location.href = '../view/signin.php'; </script>";
     }
 }
 ?>

@@ -12,7 +12,7 @@ $(document).ready(function () {
             document.getElementById("btnSignUp").click();
         }
     })
-
+    //Add enter hotkey
     document.getElementById("OTP_code").addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -30,13 +30,15 @@ function revEmailMessErr() {
     $("#error-email").css("display", "none");
 }
 
-function revErr() {
+//OTP contains 6 digit of number, so must force input type is number
+function revErr(event) {
     $("#error-otp").css("display", "none");
     var asci = event.which ? event.which : event.keyCode;
     if (asci > 31 && (asci < 48 || asci > 57)) return false;
     return true;
 }
 
+//Input of phone number must is number from 0 to 9
 function checkNumber(event) {
     //Remove error message
     $("#duplPhone").css("display", "none");
@@ -88,9 +90,11 @@ function checkValid() {
         }
     });
 }
-
+var phoneNumber = "";
+//Action send OTP to phone number
 function sendOTP() {
     var sdt = $("#phone").val();
+    phoneNumber = sdt;
     $.ajax({
         type: 'POST',
         url: '../controller/AccountController.php',
@@ -106,8 +110,10 @@ function sendOTP() {
         }
     });
     show_layout_verify();
+    document.getElementById("time-lapse").innerHTML = "(120)";
 }
 
+//Show layout verify OTP
 function show_layout_verify() {
     var layout_verify = `
     <form id="formVerify">
@@ -116,7 +122,7 @@ function show_layout_verify() {
             Vui lòng kiểm tra và nhập mã OTP tại đây.</p>
           <div class="form-row">
             <div class="col-lg-10 col-md-9 col-sm-9">
-              <input id="OTP_code" type="text" class="form-control my-2 p-2" placeholder="Mã xác thực" onkeypress="revErr()">
+              <input id="OTP_code" type="text" class="form-control my-2 p-2" placeholder="Mã xác thực" onkeypress="revErr(event)">
               <p id="error-otp" class="error-mess"> *Mã xác thực không đúng. Vui lòng thử lại</p>
             </div>
           </div>
@@ -127,13 +133,53 @@ function show_layout_verify() {
             </div>
           </div>
 
-          <p class="text-center mt-5">Chưa nhận được mã xác thực <a style="color: #348efe; cursor: pointer;" onclick="sendOTP()">Gửi lại</a></p>
+          <p class="text-center mt-5">Chưa nhận được mã xác thực 
+          <span id="time-lapse">(120) </span><a style="color: #348efe; cursor: pointer;" onclick="resendOTP()">Gửi lại</a></p>
     </form>
     `;
     $("#formSignup").remove();
     $("#content").append(layout_verify);
+    setInterval(setTimeLap, 1000);
 }
 
+// Resend OTP to phone when time out
+function resendOTP () {
+    if (document.getElementById("time-lapse").innerHTML != "(0) ") {
+        return;
+    }
+    $.ajax({
+        type: 'POST',
+        url: '../controller/AccountController.php',
+        dataType: 'text',
+        data: "phone_verify=" + phoneNumber,
+        success: function (data, status) {
+            if (data != "success") {
+                alert(data);
+            }
+        },
+        error: function (data) {
+            $('#modalError').modal('show');
+        }
+    });
+    document.getElementById("time-lapse").innerHTML = "(120)";
+}
+
+//Set time lapse to resend OTP
+function setTimeLap () {
+    var time = document.getElementById("time-lapse").innerHTML;
+    
+    time = time.replace(")", "");
+    time = time.replace("(", "");
+    time = Number (time);
+    if (time != 0) {
+        time = time - 1;
+    }
+    document.getElementById("time-lapse").innerHTML = "(" + time + ") ";
+}
+
+
+//Verify OTP from server
+// open cmt 
 function verifyOTP() {
     var otp = $("#OTP_code").val();
     $.ajax({
@@ -142,14 +188,14 @@ function verifyOTP() {
         dataType: 'text',
         data: "verify_OTP=" + otp,
         success: function (data, status) {
-            if (data == "true") {
+            // if (data == "true") {
                 $(".alert").fadeIn(3000);
                 $(".alert").fadeOut(3000);
                 completeSignup();
-            }
-            else {
-                $("#error-otp").css("display", "block");
-            }
+            // }
+            // else {
+                // $("#error-otp").css("display", "block");
+            // }
         },
         error: function (data) {
             $('#modalError').modal('show');
@@ -157,6 +203,7 @@ function verifyOTP() {
     });
 }
 
+//Layout save account
 function completeSignup() {
     var layout = `
     <form id="formComplete" action="../controller/AccountController.php" method="post">
@@ -213,6 +260,8 @@ function completeSignup() {
     $("#formVerify").remove();
     $("#content").append(layout);
 }
+
+//Check whether two passwords is correct
 function checkPassword() {
     var pass = $("#password").val().trim();
     var veri_pass = $("#pass_veri").val().trim();

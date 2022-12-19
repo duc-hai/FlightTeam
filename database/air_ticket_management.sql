@@ -139,13 +139,13 @@ INSERT INTO `chuyenbay` (`machuyenbay`, `tenmaybay`, `ngaydi`, `ngayden`) VALUES
 CREATE TABLE `khachhang` (
   `sdt` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `matkhau` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `danhxung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `danhxung` varchar(50) COLLATE utf8_unicode_ci NULL,
   `hoten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinh` date DEFAULT NULL,
-  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `quoctich` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `cccd_passport` varchar(20) COLLATE utf8_unicode_ci NULL,
+  `quoctich` varchar(50) COLLATE utf8_unicode_ci NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `gioitinh` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `gioitinh` varchar(50) COLLATE utf8_unicode_ci NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

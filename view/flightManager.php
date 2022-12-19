@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-lg-2">
                 <div id="danhmuc">
-                    <img src = "/FlightTeam/assests/imgs/logo.png" style="width:100% ;height:100% ;">
+                    <img src = "../assests/imgs/logo.png" style="width:100% ;height:100% ;">
                     <div class="list-group">
                         <a  class='list-group-item' onclick="get_all_tickets()" >Thông tin vé máy bay</a>
                         <a class='list-group-item' onclick="get_history_tickets()" >Lịch sử mua vé</a>
@@ -87,7 +87,7 @@
     // lấy dữ  liệu cho quản lý vé máy bay
     function get_all_tickets() {
         $.ajax({
-        url: "/FlightTeam/controller/FlightManagerControler.php?action=getAllTicket",
+        url: "../controller/FlightManagerControler.php?action=getAllTicket",
         dataType: 'json',
             success: function (data) { 
                 show_tickets (data);
@@ -148,7 +148,7 @@
 
     function get_history_tickets() {
         $.ajax({
-        url: "/FlightTeam/controller/FlightManagerControler.php?action=gethistoryTicket",
+        url: "../controller/FlightManagerControler.php?action=gethistoryTicket",
         dataType: 'json',
             success: function (data) { 
                 show_history_tickets (data);
@@ -207,7 +207,7 @@
         //Quản lý chuyến bay
         function get_flight() {
             $.ajax({
-            url: "/FlightTeam/controller/FlightManagerControler.php?action=getflight",
+            url: "../controller/FlightManagerControler.php?action=getflight",
             dataType: 'json',
                 success: function (data) { 
                     show_flight (data);
