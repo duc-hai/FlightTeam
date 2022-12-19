@@ -89,7 +89,7 @@
     </nav>  
 <div class="container">
     <div class="row" id="seach">
-    <div class="col-sm-1 col-md-2 col-lg-2"></div>
+    <div class="col-sm-1 col-md-2 col-lg-3"></div>
     <div class="col-sm-7 col-md-9 col-lg-7">
             <div class="wrap_search" style="margin-top:5% ">
                 <form action=""  method="get">
@@ -113,23 +113,29 @@
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<table> 
-            <thead>
-                    <tr class= 'caption'>
-                        <th>Mã đặt chỗ </th> 
-                        <th>Họ tên khách hàng</th>  
-                        <th>Ngày sinh khách hàng</th> 
-                        <th>Cccd / passport</th>  
-                        <th>Loại khách hàng</th>  
-                        <th>Vị trí ghế</th>  
-                        <th>Cổng vào</th>  
-                        <th>Số túi xách / hành lý</th>
-                        <th>Tổng giá vé</th>
-                        <th>Loại vé</th>
-                        <th>Tình trạng</th>
-                        <th>Ngày đặt</th>
-                    </tr>
-            </thead>
+            echo "
+            <div class='row'>
+                <div class='col-sm-1 col-md-2 col-lg-1'></div>
+                    <div class='col-sm-7 col-md-9 col-lg-10'>
+                        <table> 
+                        <thead>
+                                <tr class= 'caption'>
+                                    <th>Mã đặt chỗ </th> 
+                                    <th>Họ tên khách hàng</th>  
+                                    <th>Ngày sinh khách hàng</th> 
+                                    <th>Cccd / passport</th>  
+                                    <th>Loại khách hàng</th>  
+                                    <th>Vị trí ghế</th>  
+                                    <th>Cổng vào</th>  
+                                    <th>Số túi xách / hành lý</th>
+                                    <th>Tổng giá vé</th>
+                                    <th>Loại vé</th>
+                                    <th>Tình trạng</th>
+                                    <th>Ngày đặt</th>
+                                </tr>
+                        </thead>
+                    </div>
+            </div>
             "
             ;
 

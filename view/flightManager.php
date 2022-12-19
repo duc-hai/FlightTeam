@@ -279,8 +279,6 @@
             $("#list-getflight").append(table);
         }
     }
-
-
     function get_all_Post() {
         $.ajax({
             url: "../controller/PosterController.php?action=getAllPost",
@@ -296,7 +294,8 @@
         let tablemain = ` 
             <div id ="tablePost">
                 <h1 style ="margin-top: 4%">Thông tin bài viết
-                <img src = "/FlightTeam/assests/imgs/anhMap.jpg" style="width:5% ;height:5% ;">
+                <img src = "/FlightTeam/assests/imgs/internet.jpg" style="width:5% ;height:5% ;"><br>
+                <a href="../view/addPost.php" id="addticket" class="btn btn-danger mt-10">Thêm bài viết</a>
                 </h1>
                     <table id="list-Post" class="table table-bordered" style ="margin-top: 2%;text-align: center;">
                     <thead>
@@ -305,6 +304,7 @@
                             <th>Tên bài viết</th>
                             <th>Ngày đăng</th>
                             <th>Hình ảnh</th>
+                            <th></th>
                         </tr>  
                     </thead>
                     </table>
@@ -324,6 +324,8 @@
                         <td>`+ row.namePosst +`</td>
                         <td>`+ row.datePost + `</td>
                         <td><img src = "`+row.imgPost+`" style = "width:200px ; height:100px ;"></td>
+                        <td><a href ='../view/morePost.php?idPost=`+row.idPost+`&action=getinforPost'>Xem thêm</a></td>
+                        
                     </tr>
                 </tbody>
                 </table>`

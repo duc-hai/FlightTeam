@@ -49,8 +49,8 @@
     <!-- Navbar -->
   <nav class="navbar navbar-expand-lg " style="background-color: #CFF3FF;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../view/home.php">
-                 <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill">FlightTeam Air</a>
+            <a class="navbar-brand" href="../view/home.php" style="color: black;">
+                 <img src="../assests/imgs/logo.png" alt="Avatar Logo" style="width:70px;" class="rounded-pill">FlightTeam Air
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -276,22 +276,23 @@
       <div class="container p-0">
         <div class="row">
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question2.jpg">
+                <a href="../view/quizz.php"><img class="img-question" src="../assests/imgs/question2.jpg"></a>
             </div>
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question3.jpg">
+                <a href="../view/quizz.php">  <img class="img-question" src="../assests/imgs/question3.jpg"></a>
             </div>
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question4.jpg">
+                <a href="../view/quizz.php"> <img class="img-question" src="../assests/imgs/question4.jpg"></a>
             </div>
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question5.jpg">
+                <a href="../view/quizz.php"><img class="img-question" src="../assests/imgs/question5.jpg"></a>
             </div>
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question6.jpg">
+                <a href="../view/quizz.php"> <img class="img-question" src="../assests/imgs/question6.jpg"></a>
             </div>
             <div class="col-2">
-            <img class="img-question" src="../assests/imgs/question7.jpg">
+                <a href="../view/quizz.php"><img class="img-question" src="../assests/imgs/question7.jpg"></a>
+            
             </div>
         </div>
       </div>
